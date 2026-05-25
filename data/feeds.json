@@ -1,0 +1,120 @@
+{
+  "markets": [
+    {
+      "name": "Bloomberg Markets",
+      "url": "https://feeds.bloomberg.com/business/news.rss",
+      "tier": 1
+    },
+    {
+      "name": "Reuters Finance",
+      "url": "https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best",
+      "tier": 1
+    },
+    {
+      "name": "WSJ Markets",
+      "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",
+      "tier": 1
+    },
+    {
+      "name": "Financial Times",
+      "url": "https://www.ft.com/?format=rss",
+      "tier": 1
+    },
+    {
+      "name": "MarketWatch",
+      "url": "https://www.marketwatch.com/rss/topstories",
+      "tier": 2
+    },
+    {
+      "name": "Investing.com",
+      "url": "https://www.investing.com/rss/news.rss",
+      "tier": 2
+    },
+    {
+      "name": "Seeking Alpha",
+      "url": "https://seekingalpha.com/feed.xml",
+      "tier": 2
+    }
+  ],
+  "ai_tech": [
+    {
+      "name": "TechCrunch AI",
+      "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "tier": 1
+    },
+    {
+      "name": "The Verge AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml",
+      "tier": 1
+    },
+    {
+      "name": "VentureBeat AI",
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "tier": 1
+    },
+    {
+      "name": "MIT AI News",
+      "url": "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml",
+      "tier": 1
+    },
+    {
+      "name": "AI News",
+      "url": "https://www.artificialintelligence-news.com/feed/",
+      "tier": 2
+    },
+    {
+      "name": "Machine Learning Mastery",
+      "url": "https://machinelearningmastery.com/feed/",
+      "tier": 2
+    }
+  ],
+  "crypto": [
+    {
+      "name": "CoinDesk",
+      "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
+      "tier": 1
+    },
+    {
+      "name": "The Block",
+      "url": "https://www.theblock.co/rss.xml",
+      "tier": 1
+    },
+    {
+      "name": "Decrypt",
+      "url": "https://decrypt.co/feed",
+      "tier": 1
+    },
+    {
+      "name": "Cointelegraph",
+      "url": "https://cointelegraph.com/rss",
+      "tier": 2
+    },
+    {
+      "name": "CryptoSlate",
+      "url": "https://cryptoslate.com/feed/",
+      "tier": 2
+    }
+  ],
+  "macro": [
+    {
+      "name": "ZeroHedge",
+      "url": "https://feeds.feedburner.com/zerohedge/feed",
+      "tier": 2
+    },
+    {
+      "name": "Real Vision",
+      "url": "https://www.realvision.com/rss",
+      "tier": 1
+    },
+    {
+      "name": "Macro Hive",
+      "url": "https://www.macrohive.com/feed/",
+      "tier": 2
+    },
+    {
+      "name": "Fed RSS",
+      "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+      "tier": 1
+    }
+  ]
+}

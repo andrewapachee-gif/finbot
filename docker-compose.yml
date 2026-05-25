@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  finbot:
+    build: .
+    container_name: finbot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - finbot-network
+
+networks:
+  finbot-network:
+    driver: bridge

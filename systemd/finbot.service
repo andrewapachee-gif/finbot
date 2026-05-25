@@ -1,0 +1,15 @@
+[Unit]
+Description=FinBot - AI Finance Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=finbot
+WorkingDirectory=/opt/finbot
+Environment=PYTHONPATH=/opt/finbot/src
+ExecStart=/opt/finbot/venv/bin/python src/main.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
