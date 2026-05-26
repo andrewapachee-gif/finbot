@@ -173,10 +173,15 @@ class TelegramBot:
             return False
             
     async def run(self):
-        """Run the bot."""
+        """Run the bot with polling for commands."""
         await self.initialize()
-        # Don't start updater - just keep the bot instance alive
-        logger.info("Bot is running (scheduler mode, no command polling)...")
+        # Start polling for commands
+        await self.application.initialize()
+        await self.application.start()
+        logger.info("Bot is running with command polling...")
+        # Keep running
+        while True:
+            await asyncio.sleep(1)
         
     async def stop(self):
         """Stop the bot."""

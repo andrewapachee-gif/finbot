@@ -69340,3 +69340,23 @@ telegram.error.Conflict: Conflict: terminated by other getUpdates request; make 
         
 2026-05-26 05:35:13,854 | INFO | finbot | No new clips found
 2026-05-26 05:36:14,469 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 05:46:35,719 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-26 05:46:45,065 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 05:46:45,140 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x76be3d6e40>
+2026-05-26 05:46:45,143 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x76be100290>, 46601.453417161)])']
+connector: <aiohttp.connector.TCPConnector object at 0x76be3d6f90>
+2026-05-26 05:48:27,297 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 06:00:43,846 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-26 06:00:58,716 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 06:00:58,737 | INFO | finbot | Fetching markets feeds...
+2026-05-26 06:01:04,576 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-26 06:01:07,153 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-26 06:01:08,359 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-26 06:01:10,007 | INFO | finbot | Fetched 9 from Financial Times
+2026-05-26 06:01:13,565 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-26 06:01:14,786 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-26 06:01:15,945 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-26 06:01:15,945 | INFO | finbot | Total articles fetched: 59
+2026-05-26 06:03:01,440 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
