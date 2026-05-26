@@ -26,6 +26,8 @@ class TelegramBot:
         self.application.add_handler(CommandHandler("status", self.status_command))
         self.application.add_handler(CommandHandler("post", self.post_command))
         self.application.add_handler(CommandHandler("queue", self.queue_command))
+        self.application.add_handler(CommandHandler("clips", self.clips_command))
+        self.application.add_handler(CommandHandler("fetchclips", self.fetchclips_command))
         
         logger.info("Telegram bot initialized")
         
@@ -36,7 +38,9 @@ class TelegramBot:
             "Commands:\n"
             "/status - Check bot status\n"
             "/post - Manually trigger a post\n"
-            "/queue - View pending posts"
+            "/queue - View pending posts\n"
+            "/clips - YouTube clip stats\n"
+            "/fetchclips - Manually fetch clips"
         )
         
     async def status_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -94,6 +98,35 @@ class TelegramBot:
             text += f"   Sentiment: {sentiment} | Relevance: {relevance:.2f}\n\n"
             
         await update.message.reply_text(text)
+        
+    async def clips_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /clips command - show recent clips info."""
+        from youtube_fetcher import youtube_fetcher
+        
+        posted_count = len(youtube_fetcher.posted_videos)
+        recent_channels = youtube_fetcher.channel_history[-10:]
+        
+        text = (
+            f"🎬 YouTube Clip Stats:\n\n"
+            f"Posted clips: {posted_count}\n"
+            f"Recent channels: {len(recent_channels)}\n"
+            f"Max clips/run: 3\n"
+            f"Schedule: 10:00, 18:00 UTC\n\n"
+            f"Use /fetchclips to manually trigger fetch"
+        )
+        await update.message.reply_text(text)
+        
+    async def fetchclips_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /fetchclips command - manually trigger clip fetch."""
+        await update.message.reply_text("🔄 Fetching YouTube clips...")
+        
+        from scheduler import scheduler
+        
+        try:
+            await scheduler.run_youtube_clips()
+            await update.message.reply_text("✅ Clip fetch complete")
+        except Exception as e:
+            await update.message.reply_text(f"❌ Error: {str(e)[:200]}")
         
     async def send_message(self, text: str, parse_mode: str = "HTML"):
         """Send a message to the channel."""

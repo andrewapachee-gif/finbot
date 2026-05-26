@@ -69234,3 +69234,109 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.13/dist-packages/telegram/request/_baserequest.py", line 375, in _request_wrapper
     raise exception
 telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2026-05-25 19:46:23,171 | INFO | finbot | Telegram bot initialized
+2026-05-25 19:46:25,210 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-25 19:46:25,217 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-25 19:46:36,439 | INFO | finbot | Fetching markets feeds...
+2026-05-25 19:46:39,055 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-25 19:46:41,495 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-25 19:46:42,798 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-25 19:46:44,522 | INFO | finbot | Fetched 9 from Financial Times
+2026-05-25 19:46:48,382 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-25 19:46:49,635 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-25 19:46:50,836 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-25 19:46:50,837 | INFO | finbot | Total articles fetched: 59
+2026-05-25 19:46:50,837 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-25 19:46:52,038 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-25 19:46:53,249 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-25 19:46:55,065 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-25 19:46:57,465 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-25 19:47:03,628 | INFO | finbot | Fetched 10 from AI News
+2026-05-25 19:47:04,861 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-25 19:47:04,861 | INFO | finbot | Total articles fetched: 47
+2026-05-25 19:47:04,862 | INFO | finbot | Fetching crypto feeds...
+2026-05-25 19:47:06,390 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-25 19:47:07,650 | INFO | finbot | Fetched 10 from The Block
+2026-05-25 19:47:09,007 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-25 19:47:10,189 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-25 19:47:11,983 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-25 19:47:11,983 | INFO | finbot | Total articles fetched: 50
+2026-05-25 19:47:11,984 | INFO | finbot | Fetching macro feeds...
+2026-05-25 19:47:14,060 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-25 19:47:15,431 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-25 19:47:16,625 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-25 19:47:17,865 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-25 19:47:17,865 | INFO | finbot | Total articles fetched: 20
+2026-05-25 19:53:10,217 | INFO | finbot | Telegram bot initialized
+2026-05-25 19:53:12,164 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-25 19:53:12,170 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-26 05:25:01,703 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-26 05:28:30,693 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-26 05:28:31,864 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:28:32,736 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:28:33,556 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:28:34,358 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:28:35,194 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:28:35,697 | INFO | finbot | No new clips found
+2026-05-26 05:30:03,161 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:30:04,026 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:30:04,819 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:30:05,616 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:30:06,429 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:30:06,938 | INFO | finbot | No new clips found
+2026-05-26 05:30:48,859 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:31:43,864 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:31:44,148 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:31:44,441 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:31:44,739 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:31:45,059 | WARNING | finbot | YouTube API returned 400
+2026-05-26 05:33:26,452 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-26 05:35:10,009 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-26 05:35:10,903 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-26 05:35:11,695 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-26 05:35:12,521 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-26 05:35:13,347 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-26 05:35:13,854 | INFO | finbot | No new clips found
+2026-05-26 05:36:14,469 | INFO | finbot | Selected 3 clips from 3 unique channels

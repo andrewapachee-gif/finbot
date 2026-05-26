@@ -179,6 +179,61 @@ class Publisher:
             
         await bot.send_message(text)
         logger.info("Market summary posted")
+
+    async def post_youtube_clip(self, clip: Dict, video_path: str) -> bool:
+        """Post a trimmed YouTube clip to the channel."""
+        from bot import bot
+        from youtube_fetcher import youtube_fetcher
+        
+        if self.posted_today >= MAX_POSTS_PER_DAY:
+            logger.warning(f"Daily post limit reached ({MAX_POSTS_PER_DAY})")
+            return False
+            
+        if self.is_duplicate(clip['video_id']):
+            logger.info(f"Skipping duplicate clip: {clip['title'][:50]}")
+            return False
+            
+        # Format caption
+        sentiment_emoji = "🎬"
+        channel = clip.get('channel_title', 'Unknown')
+        
+        caption = f"""{sentiment_emoji} <b>{clip['title']}</b>
+
+📺 {channel}
+⏱ {clip.get('duration_sec', '?')}s
+👀 {clip.get('view_count', 0):,} views
+
+🔗 <a href="{clip['url']}">Watch on YouTube</a>
+
+#YouTubeClip #Finance #Investing"""
+        
+        success = await self.send_video(video_path, caption)
+        if success:
+            self.mark_posted(clip['video_id'])
+            self.posted_today += 1
+            youtube_fetcher.mark_posted(clip['video_id'], clip['channel_id'])
+            logger.info(f"Posted clip: {clip['title'][:50]}...")
+            return True
+        return False
+        
+    async def send_video(self, video_path: str, caption: str, parse_mode: str = "HTML"):
+        """Send a video file to the channel."""
+        try:
+            from telegram import InputFile
+            
+            with open(video_path, 'rb') as f:
+                await self.bot.bot.send_video(
+                    chat_id=self.channel_id,
+                    video=InputFile(f),
+                    caption=caption,
+                    parse_mode=parse_mode,
+                    supports_streaming=True
+                )
+            logger.info(f"Video sent to {self.channel_id}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to send video: {e}")
+            return False
         
     def reset_daily_counter(self):
         """Reset daily post counter."""

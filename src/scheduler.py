@@ -10,6 +10,8 @@ from config import (
     POSTING_MODE, logger
 )
 from rss_fetcher import fetcher
+from youtube_fetcher import youtube_fetcher
+from clip_trimmer import trimmer
 from ai_filter import ai_filter
 from publisher import publisher
 from queue_manager import queue_manager
@@ -20,6 +22,50 @@ class Scheduler:
     def __init__(self):
         self.running = False
         self.daily_articles = []  # Store articles for daily digest
+
+    async def run_youtube_clips(self):
+        """Fetch and post YouTube clips."""
+        logger.info("Fetching YouTube clips...")
+        
+        await youtube_fetcher.initialize()
+        
+        # Fetch unique clips
+        clips = await youtube_fetcher.fetch_unique_clips()
+        
+        if not clips:
+            logger.info("No new clips found")
+            await youtube_fetcher.close()
+            return
+            
+        # Download and trim each clip
+        for clip in clips:
+            try:
+                video_path = await trimmer.auto_trim(
+                    clip['video_id'], 
+                    clip['title']
+                )
+                
+                if video_path:
+                    # Post to channel
+                    if POSTING_MODE == 'auto':
+                        await publisher.post_youtube_clip(clip, str(video_path))
+                    elif POSTING_MODE == 'queue':
+                        # Add to queue with video path
+                        clip['video_path'] = str(video_path)
+                        queue_manager.add_to_queue(clip)
+                        logger.info(f"Added clip to queue: {clip['title'][:50]}...")
+                        
+                    # Rate limit
+                    await asyncio.sleep(5)
+                    
+            except Exception as e:
+                logger.error(f"Failed to process clip {clip['video_id']}: {e}")
+                
+        # Cleanup old clips
+        trimmer.cleanup_old_clips()
+        
+        await youtube_fetcher.close()
+        logger.info("YouTube clip fetch complete")
 
     async def run_daily_digest(self):
         """Fetch and post daily digest."""
@@ -131,6 +177,14 @@ class Scheduler:
         )
         schedule.every().day.at("16:00").do(
             lambda: asyncio.create_task(self.run_market_summary())
+        )
+
+        # YouTube clips (twice daily)
+        schedule.every().day.at("10:00").do(
+            lambda: asyncio.create_task(self.run_youtube_clips())
+        )
+        schedule.every().day.at("18:00").do(
+            lambda: asyncio.create_task(self.run_youtube_clips())
         )
 
         # Breaking news check (every 6 hours)

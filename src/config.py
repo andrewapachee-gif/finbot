@@ -34,6 +34,15 @@ elif "mistral" in AI_MODEL.lower() and MISTRAL_API_KEY:
 else:
     AI_PROVIDER = "openai"
 
+# YouTube
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY", "")
+MAX_CLIP_DURATION = os.getenv("MAX_CLIP_DURATION", "120")
+MIN_CLIP_DURATION = os.getenv("MIN_CLIP_DURATION", "15")
+MAX_CLIPS_PER_RUN = os.getenv("MAX_CLIPS_PER_RUN", "3")
+CLIP_QUALITY = os.getenv("CLIP_QUALITY", "720")
+TARGET_CLIP_DURATION = os.getenv("TARGET_CLIP_DURATION", "45")
+MAX_CLIP_FILE_SIZE_MB = os.getenv("MAX_CLIP_FILE_SIZE_MB", "20")
+
 # Bot Behavior
 POSTING_MODE = os.getenv("POSTING_MODE", "auto")  # auto, queue, manual
 DAILY_DIGEST_TIME = os.getenv("DAILY_DIGEST_TIME", "09:00")
