@@ -6,12 +6,14 @@ from datetime import datetime
 from config import logger, POSTING_MODE
 from bot import bot
 from scheduler import scheduler
+from health import health_server, stop_health_server
 
 class FinBot:
     """Main bot application."""
     
     def __init__(self):
         self.running = False
+        self.health_runner = None
         
     def _signal_handler(self, signum, frame):
         """Handle shutdown signals."""
@@ -30,6 +32,9 @@ class FinBot:
         
         # Initialize bot
         await bot.initialize()
+        
+        # Start health check server (for Railway)
+        self.health_runner = await health_server()
         
         logger.info(f"Posting mode: {POSTING_MODE}")
         logger.info("Bot initialized successfully")
@@ -58,6 +63,9 @@ class FinBot:
             # Cleanup
             scheduler.stop()
             await bot.stop()
+            
+            if self.health_runner:
+                await stop_health_server(self.health_runner)
             
             # Cancel tasks
             scheduler_task.cancel()

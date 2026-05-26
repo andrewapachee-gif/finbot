@@ -5,7 +5,11 @@
     "nixpacksPlan": {
       "phases": {
         "setup": {
+          "nixPkgs": ["ffmpeg", "python3"],
           "aptPackages": ["ffmpeg", "ffprobe"]
+        },
+        "build": {
+          "cmds": ["pip install -r requirements.txt"]
         }
       }
     }
@@ -15,6 +19,10 @@
     "restartPolicy": {
       "type": "ON_FAILURE",
       "maxRetries": 10
+    },
+    "healthcheck": {
+      "path": "/health",
+      "port": 8080
     }
   }
 }

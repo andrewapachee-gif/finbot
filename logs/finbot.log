@@ -70929,3 +70929,69 @@ telegram.error.TimedOut: Timed out
 2026-05-26 13:20:39,243 | INFO | finbot | Daily digest posted
 2026-05-26 13:20:39,250 | INFO | finbot | Daily digest complete
 2026-05-26 13:26:50,726 | INFO | finbot | Received signal 15, shutting down...
+2026-05-26 13:26:51,662 | INFO | finbot | Scheduler stopped
+2026-05-26 13:26:51,663 | INFO | telegram.ext.Application | Application is stopping. This might take a moment.
+2026-05-26 13:26:51,664 | INFO | telegram.ext.Application | Application.stop() complete
+2026-05-26 13:26:51,668 | INFO | finbot | Bot stopped
+2026-05-26 13:26:51,668 | INFO | finbot | FinBot shutdown complete
+2026-05-26 13:30:11,903 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-26 13:30:11,909 | WARNING | finbot | No AI provider configured. Content filtering disabled.
+2026-05-26 13:30:11,932 | INFO | finbot | ==================================================
+2026-05-26 13:30:11,932 | INFO | finbot | FinBot Starting
+2026-05-26 13:30:11,932 | INFO | finbot | ==================================================
+2026-05-26 13:30:12,485 | INFO | finbot | Telegram bot initialized
+2026-05-26 13:30:12,485 | INFO | finbot | Posting mode: auto
+2026-05-26 13:30:12,486 | INFO | finbot | Bot initialized successfully
+2026-05-26 13:30:12,486 | INFO | finbot | FinBot is running!
+2026-05-26 13:30:12,487 | INFO | finbot | Schedule setup complete
+2026-05-26 13:30:12,487 | INFO | finbot | Scheduler started
+2026-05-26 13:30:12,487 | INFO | finbot | Running startup tasks...
+2026-05-26 13:30:12,487 | INFO | finbot | Fetching YouTube clips...
+2026-05-26 13:30:12,564 | INFO | finbot | Telegram bot initialized
+2026-05-26 13:30:14,173 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/getMe "HTTP/1.1 200 OK"
+2026-05-26 13:30:14,179 | INFO | telegram.ext.Application | Application started
+2026-05-26 13:30:14,180 | INFO | finbot | Bot is running with command polling...
+2026-05-26 13:30:21,328 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 13:30:21,342 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 13:30:23,420 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 13:30:23,441 | INFO | finbot | Posted clip: Why Is STOCK MARKET Rising Today? Sensex UP 1,000+...
+2026-05-26 13:30:28,471 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 13:30:30,768 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 13:30:30,799 | INFO | finbot | Posted clip: మన Investors Meet ను success చేసిన మీ అందరికీ పేరు...
+2026-05-26 13:30:35,827 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 13:30:38,317 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 13:30:38,329 | INFO | finbot | Posted clip: Рынок растёт, а БИТКОЙН падает - ВОТ ПРИЧИНА! #фак...
+2026-05-26 13:30:43,351 | INFO | finbot | YouTube clip fetch complete
+2026-05-26 13:30:43,352 | INFO | finbot | Running daily digest...
+2026-05-26 13:30:43,354 | INFO | finbot | Fetching markets feeds...
+2026-05-26 13:30:45,138 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-26 13:30:47,792 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-26 13:30:49,118 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-26 13:30:51,735 | INFO | finbot | Fetched 9 from Financial Times
+2026-05-26 13:30:56,340 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-26 13:30:57,829 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-26 13:30:59,099 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-26 13:30:59,100 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-26 13:31:05,796 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-26 13:31:07,164 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-26 13:31:10,479 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-26 13:31:17,514 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-26 13:31:21,686 | INFO | finbot | Fetched 10 from AI News
+2026-05-26 13:31:22,962 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-26 13:31:22,962 | INFO | finbot | Fetching crypto feeds...
+2026-05-26 13:31:30,378 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-26 13:31:31,695 | INFO | finbot | Fetched 10 from The Block
+2026-05-26 13:31:33,270 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-26 13:31:34,795 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-26 13:31:37,123 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-26 13:31:37,124 | INFO | finbot | Fetching macro feeds...
+2026-05-26 13:31:39,523 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-26 13:31:41,322 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-26 13:31:42,795 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-26 13:31:44,717 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-26 13:31:44,718 | INFO | finbot | Total articles fetched: 176
+2026-05-26 13:31:44,718 | INFO | finbot | AI filtering disabled - using all articles
+2026-05-26 13:31:47,055 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-26 13:31:47,060 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-26 13:31:47,060 | INFO | finbot | Daily digest posted
+2026-05-26 13:31:47,074 | INFO | finbot | Daily digest complete
