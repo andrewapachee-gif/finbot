@@ -27,7 +27,9 @@ MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY", "")
 AI_MODEL = os.getenv("AI_MODEL", "gpt-4o-mini")
 
 # Determine which AI provider to use
-if "claude" in AI_MODEL.lower() and ANTHROPIC_API_KEY:
+if AI_MODEL.lower() in ["none", "disabled", ""]:
+    AI_PROVIDER = "none"
+elif "claude" in AI_MODEL.lower() and ANTHROPIC_API_KEY:
     AI_PROVIDER = "anthropic"
 elif "mistral" in AI_MODEL.lower() and MISTRAL_API_KEY:
     AI_PROVIDER = "mistral"

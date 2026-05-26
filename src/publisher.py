@@ -213,9 +213,11 @@ class Publisher:
             success = await self.send_video(video_path, caption)
         else:
             # Fallback: send thumbnail with link
-            success = await bot.send_photo(
+            success = await bot.bot.send_photo(
+                chat_id=bot.channel_id,
                 photo=clip.get('thumbnail', ''),
-                caption=caption
+                caption=caption,
+                parse_mode='HTML'
             )
             
         if success:
@@ -232,14 +234,14 @@ class Publisher:
             from telegram import InputFile
             
             with open(video_path, 'rb') as f:
-                await self.bot.bot.send_video(
-                    chat_id=self.channel_id,
+                await bot.bot.send_video(
+                    chat_id=bot.channel_id,
                     video=InputFile(f),
                     caption=caption,
                     parse_mode=parse_mode,
                     supports_streaming=True
                 )
-            logger.info(f"Video sent to {self.channel_id}")
+            logger.info(f"Video sent to {bot.channel_id}")
             return True
         except Exception as e:
             logger.error(f"Failed to send video: {e}")
