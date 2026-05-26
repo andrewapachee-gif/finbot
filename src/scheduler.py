@@ -37,7 +37,7 @@ class Scheduler:
             await youtube_fetcher.close()
             return
             
-        # Download and trim each clip
+        # Download and trim each clip (if tools available)
         for clip in clips:
             try:
                 video_path = await trimmer.auto_trim(
@@ -45,19 +45,18 @@ class Scheduler:
                     clip['title']
                 )
                 
-                if video_path:
-                    # Post to channel
-                    if POSTING_MODE == 'auto':
-                        await publisher.post_youtube_clip(clip, str(video_path))
-                    elif POSTING_MODE == 'queue':
-                        # Add to queue with video path
-                        clip['video_path'] = str(video_path)
-                        queue_manager.add_to_queue(clip)
-                        logger.info(f"Added clip to queue: {clip['title'][:50]}...")
-                        
-                    # Rate limit
-                    await asyncio.sleep(5)
+                # Post to channel (video or thumbnail fallback)
+                if POSTING_MODE == 'auto':
+                    await publisher.post_youtube_clip(clip, str(video_path) if video_path else None)
+                elif POSTING_MODE == 'queue':
+                    # Add to queue with video path
+                    clip['video_path'] = str(video_path) if video_path else None
+                    queue_manager.add_to_queue(clip)
+                    logger.info(f"Added clip to queue: {clip['title'][:50]}...")
                     
+                # Rate limit
+                await asyncio.sleep(5)
+                
             except Exception as e:
                 logger.error(f"Failed to process clip {clip['video_id']}: {e}")
                 
@@ -179,8 +178,14 @@ class Scheduler:
             lambda: asyncio.create_task(self.run_market_summary())
         )
 
-        # YouTube clips (twice daily)
+        # YouTube clips (4x daily for more content)
+        schedule.every().day.at("06:00").do(
+            lambda: asyncio.create_task(self.run_youtube_clips())
+        )
         schedule.every().day.at("10:00").do(
+            lambda: asyncio.create_task(self.run_youtube_clips())
+        )
+        schedule.every().day.at("14:00").do(
             lambda: asyncio.create_task(self.run_youtube_clips())
         )
         schedule.every().day.at("18:00").do(
@@ -221,6 +226,11 @@ class Scheduler:
         self.setup_schedule()
 
         logger.info("Scheduler started")
+        
+        # Run initial tasks on startup
+        logger.info("Running startup tasks...")
+        await self.run_youtube_clips()
+        await self.run_daily_digest()
 
         while self.running:
             schedule.run_pending()

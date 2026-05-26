@@ -69360,3 +69360,5 @@ connector: <aiohttp.connector.TCPConnector object at 0x76be3d6f90>
 2026-05-26 06:01:15,945 | INFO | finbot | Fetched 10 from Seeking Alpha
 2026-05-26 06:01:15,945 | INFO | finbot | Total articles fetched: 59
 2026-05-26 06:03:01,440 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-26 06:32:23,656 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 06:32:25,359 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"

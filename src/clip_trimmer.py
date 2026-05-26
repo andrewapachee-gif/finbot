@@ -192,7 +192,22 @@ class ClipTrimmer:
         return None
         
     async def auto_trim(self, video_id: str, title: str) -> Optional[Path]:
-        """Download and auto-trim a clip."""
+        """Download and auto-trim a clip. Returns None if download unavailable."""
+        # Check if yt-dlp is available
+        try:
+            result = subprocess.run(
+                ["yt-dlp", "--version"],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            if result.returncode != 0:
+                logger.warning("yt-dlp not available, skipping download")
+                return None
+        except FileNotFoundError:
+            logger.warning("yt-dlp not installed, skipping download")
+            return None
+            
         video_path = await self.download_clip(video_id, title)
         if not video_path:
             return None

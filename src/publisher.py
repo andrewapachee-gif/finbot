@@ -1,6 +1,7 @@
 import json
 import asyncio
 import logging
+import os
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 from config import (
@@ -180,8 +181,8 @@ class Publisher:
         await bot.send_message(text)
         logger.info("Market summary posted")
 
-    async def post_youtube_clip(self, clip: Dict, video_path: str) -> bool:
-        """Post a trimmed YouTube clip to the channel."""
+    async def post_youtube_clip(self, clip: Dict, video_path: str = None) -> bool:
+        """Post a YouTube clip to the channel."""
         from bot import bot
         from youtube_fetcher import youtube_fetcher
         
@@ -207,7 +208,16 @@ class Publisher:
 
 #YouTubeClip #Finance #Investing"""
         
-        success = await self.send_video(video_path, caption)
+        # Try video upload first, fallback to thumbnail+link
+        if video_path and os.path.exists(video_path):
+            success = await self.send_video(video_path, caption)
+        else:
+            # Fallback: send thumbnail with link
+            success = await bot.send_photo(
+                photo=clip.get('thumbnail', ''),
+                caption=caption
+            )
+            
         if success:
             self.mark_posted(clip['video_id'])
             self.posted_today += 1
