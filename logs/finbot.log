@@ -70995,3 +70995,205 @@ telegram.error.TimedOut: Timed out
 2026-05-26 13:31:47,060 | INFO | finbot | Message sent to @apexfinanceandsecurities
 2026-05-26 13:31:47,060 | INFO | finbot | Daily digest posted
 2026-05-26 13:31:47,074 | INFO | finbot | Daily digest complete
+2026-05-26 14:00:43,315 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/getMe "HTTP/1.1 200 OK"
+2026-05-26 14:00:43,887 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/getChat "HTTP/1.1 200 OK"
+2026-05-26 14:00:47,183 | INFO | finbot | Fetching YouTube clips...
+2026-05-26 14:00:52,424 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 14:00:54,828 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 14:00:56,028 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 14:00:56,043 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 14:00:57,811 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 14:00:57,821 | INFO | finbot | Posted clip: Nifty 50 and Sensex Technical Analysis for Wednesd...
+2026-05-26 14:01:02,848 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 14:01:05,578 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 14:01:05,592 | INFO | finbot | Posted clip: Closer Than Ever. Further Than Ever.              ...
+2026-05-26 14:01:10,622 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 14:01:12,719 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 14:01:12,745 | INFO | finbot | Posted clip: Why is the stockmarket ignoring reality? | The Eco...
+2026-05-26 14:01:17,760 | INFO | finbot | YouTube clip fetch complete
+2026-05-26 15:01:01,102 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-26 15:36:06,112 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-26 15:36:06,116 | WARNING | finbot | No AI provider configured. Content filtering disabled.
+2026-05-26 15:36:06,231 | INFO | finbot | ==================================================
+2026-05-26 15:36:06,232 | INFO | finbot | FinBot Starting
+2026-05-26 15:36:06,232 | INFO | finbot | ==================================================
+2026-05-26 15:36:06,655 | INFO | finbot | Telegram bot initialized
+2026-05-26 15:36:06,657 | INFO | health | Health check server started on port 8080
+2026-05-26 15:36:06,657 | INFO | finbot | Posting mode: auto
+2026-05-26 15:36:06,657 | INFO | finbot | Bot initialized successfully
+2026-05-26 15:36:06,657 | INFO | finbot | FinBot is running!
+2026-05-26 15:36:06,658 | INFO | finbot | Schedule setup complete
+2026-05-26 15:36:06,658 | INFO | finbot | Scheduler started
+2026-05-26 15:36:06,658 | INFO | finbot | Running startup tasks...
+2026-05-26 15:36:06,658 | INFO | finbot | Fetching YouTube clips...
+2026-05-26 15:36:06,712 | INFO | finbot | Telegram bot initialized
+2026-05-26 15:36:08,350 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/getMe "HTTP/1.1 200 OK"
+2026-05-26 15:36:08,357 | INFO | telegram.ext.Application | Application started
+2026-05-26 15:36:08,358 | INFO | finbot | Bot is running with command polling...
+2026-05-26 15:36:14,930 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 15:36:14,947 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 15:36:17,532 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 15:36:17,539 | INFO | finbot | Posted clip: TRUMP MENTIONS MICRON: Stock Up 12% Monday...
+2026-05-26 15:36:22,551 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 15:36:24,633 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 15:36:24,646 | INFO | finbot | Posted clip: Volume Trading Trick Will BLOW Your Mind...
+2026-05-26 15:36:29,672 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 15:36:31,759 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 15:36:31,766 | INFO | finbot | Posted clip: Nifty &amp; Sensex Prediction for Tomorrow | 27 Ma...
+2026-05-26 15:36:36,788 | INFO | finbot | YouTube clip fetch complete
+2026-05-26 15:36:36,790 | INFO | finbot | Running daily digest...
+2026-05-26 15:36:36,796 | INFO | finbot | Fetching markets feeds...
+2026-05-26 15:36:38,205 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-26 15:36:40,784 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-26 15:36:42,043 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-26 15:36:43,902 | INFO | finbot | Fetched 8 from Financial Times
+2026-05-26 15:36:47,333 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-26 15:36:48,578 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-26 15:36:49,690 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-26 15:36:49,690 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-26 15:36:50,834 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-26 15:36:52,000 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-26 15:36:54,144 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-26 15:36:58,403 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-26 15:37:29,078 | ERROR | finbot | Failed to fetch feed https://www.artificialintelligence-news.com/feed/: 
+2026-05-26 15:37:30,570 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-26 15:37:30,571 | INFO | finbot | Fetching crypto feeds...
+2026-05-26 15:37:32,848 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-26 15:37:34,113 | INFO | finbot | Fetched 10 from The Block
+2026-05-26 15:37:35,386 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-26 15:37:36,671 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-26 15:37:38,769 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-26 15:37:38,769 | INFO | finbot | Fetching macro feeds...
+2026-05-26 15:37:41,107 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-26 15:37:43,057 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-26 15:37:44,430 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-26 15:37:45,729 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-26 15:37:45,731 | INFO | finbot | Total articles fetched: 165
+2026-05-26 15:37:45,732 | INFO | finbot | AI filtering disabled - using all articles
+2026-05-26 15:37:47,706 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-26 15:37:47,712 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-26 15:37:47,712 | INFO | finbot | Daily digest posted
+2026-05-26 15:37:47,721 | INFO | finbot | Daily digest complete
+2026-05-26 16:00:47,780 | INFO | finbot | Running market summary...
+2026-05-26 16:00:47,830 | INFO | finbot | Running market summary...
+2026-05-26 16:00:59,109 | WARNING | finbot | Failed to fetch S&P 500: 'No time zone found with key America/New_York'
+2026-05-26 16:00:59,110 | WARNING | finbot | Failed to fetch S&P 500: 'No time zone found with key America/New_York'
+2026-05-26 16:00:59,452 | WARNING | finbot | Failed to fetch Nasdaq: 'No time zone found with key America/New_York'
+2026-05-26 16:00:59,456 | WARNING | finbot | Failed to fetch Nasdaq: 'No time zone found with key America/New_York'
+2026-05-26 16:00:59,801 | WARNING | finbot | Failed to fetch Dow Jones: 'No time zone found with key America/New_York'
+2026-05-26 16:00:59,801 | WARNING | finbot | Failed to fetch Dow Jones: 'No time zone found with key America/New_York'
+2026-05-26 16:01:02,482 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-26 16:01:02,490 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-26 16:01:02,491 | INFO | finbot | Market summary posted
+2026-05-26 16:01:02,937 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-26 16:01:02,949 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-26 16:01:02,949 | INFO | finbot | Market summary posted
+2026-05-26 18:00:48,342 | INFO | finbot | Fetching YouTube clips...
+2026-05-26 18:00:48,370 | INFO | finbot | Fetching YouTube clips...
+2026-05-26 18:00:53,987 | WARNING | finbot | YouTube API returned 429: {
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per minute' of service 'youtube.googleapis.com' for consumer 'project_number:
+2026-05-26 18:00:55,568 | WARNING | finbot | YouTube API returned 429: {
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per minute' of service 'youtube.googleapis.com' for consumer 'project_number:
+2026-05-26 18:00:56,736 | WARNING | finbot | YouTube API returned 429: {
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per minute' of service 'youtube.googleapis.com' for consumer 'project_number:
+2026-05-26 18:00:58,101 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 18:00:58,134 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 18:00:58,576 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-26 18:00:58,599 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 18:01:00,750 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 18:01:00,776 | INFO | finbot | Posted clip: TRUMP MENTIONS MICRON: Stock Up 12% Monday...
+2026-05-26 18:01:00,886 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 18:01:00,908 | INFO | finbot | Posted clip: Low Volume Trading Strategy Day 7...
+2026-05-26 18:01:05,804 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 18:01:05,932 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 18:01:08,529 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 18:01:08,548 | INFO | finbot | Posted clip: Modern India’s Security King 👑 | Top Stock Reveale...
+2026-05-26 18:01:08,672 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 18:01:08,690 | INFO | finbot | Posted clip: Low Volume Trading Strategy Day 7...
+2026-05-26 18:01:13,565 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 18:01:13,702 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-26 18:01:15,368 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 18:01:15,386 | INFO | finbot | Posted clip: Market Structure Explained | Lower High Lower Low ...
+2026-05-26 18:01:16,381 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-26 18:01:16,399 | INFO | finbot | Posted clip: Market Structure Explained | Lower High Lower Low ...
+2026-05-26 18:01:20,425 | INFO | finbot | YouTube clip fetch complete
+2026-05-26 18:01:21,424 | INFO | finbot | YouTube clip fetch complete
+2026-05-26 19:30:48,863 | INFO | finbot | Checking for breaking news...
+2026-05-26 19:30:48,874 | INFO | finbot | Fetching markets feeds...
+2026-05-26 19:30:50,654 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-26 19:30:54,260 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-26 19:30:56,240 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-26 19:30:58,584 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-26 19:31:04,331 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-26 19:31:06,153 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-26 19:31:08,131 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-26 19:31:08,132 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-26 19:31:09,763 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-26 19:31:11,569 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-26 19:31:13,863 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-26 19:31:22,481 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-26 19:31:52,940 | INFO | finbot | Fetched 10 from AI News
+2026-05-26 19:31:54,706 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-26 19:31:54,706 | INFO | finbot | Fetching crypto feeds...
+2026-05-26 19:31:57,819 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-26 19:31:59,746 | INFO | finbot | Fetched 10 from The Block
+2026-05-26 19:32:01,391 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-26 19:32:03,447 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-26 19:32:05,779 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-26 19:32:05,779 | INFO | finbot | Fetching macro feeds...
+2026-05-26 19:32:08,806 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-26 19:32:10,402 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-26 19:32:12,591 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-26 19:32:14,476 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-26 19:32:14,477 | INFO | finbot | Total articles fetched: 177
+2026-05-26 19:32:14,478 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 19:32:14,478 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 19:32:14,478 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 19:32:14,478 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 19:32:14,478 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 21:36:49,514 | INFO | finbot | Checking for breaking news...
+2026-05-26 21:36:49,525 | INFO | finbot | Fetching markets feeds...
+2026-05-26 21:36:51,538 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-26 21:36:56,767 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-26 21:36:58,268 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-26 21:37:01,121 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-26 21:37:05,925 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-26 21:37:07,569 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-26 21:37:09,193 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-26 21:37:09,193 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-26 21:37:10,836 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-26 21:37:13,868 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-26 21:37:16,852 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-26 21:37:23,272 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-26 21:37:42,607 | INFO | finbot | Fetched 10 from AI News
+2026-05-26 21:37:44,145 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-26 21:37:44,146 | INFO | finbot | Fetching crypto feeds...
+2026-05-26 21:37:46,278 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-26 21:37:47,910 | INFO | finbot | Fetched 10 from The Block
+2026-05-26 21:37:49,678 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-26 21:37:51,303 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-26 21:37:53,752 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-26 21:37:53,753 | INFO | finbot | Fetching macro feeds...
+2026-05-26 21:37:56,893 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-26 21:38:03,247 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-26 21:38:18,478 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-26 21:38:20,624 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-26 21:38:20,625 | INFO | finbot | Total articles fetched: 177
+2026-05-26 21:38:20,626 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 21:38:20,626 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 21:38:20,626 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 21:38:20,626 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 21:38:20,626 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-26 22:12:57,119 | INFO | finbot | Received signal 15, shutting down...
+2026-05-26 22:12:57,716 | INFO | finbot | Scheduler stopped
+2026-05-26 22:12:57,723 | INFO | telegram.ext.Application | Application is stopping. This might take a moment.
+2026-05-26 22:12:57,730 | INFO | telegram.ext.Application | Application.stop() complete
+2026-05-26 22:12:57,743 | INFO | finbot | Bot stopped
+2026-05-26 22:12:57,749 | INFO | health | Health check server stopped
+2026-05-26 22:12:57,750 | INFO | finbot | FinBot shutdown complete
