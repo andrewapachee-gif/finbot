@@ -71366,3 +71366,54 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444f750>
 2026-05-27 14:02:14,309 | INFO | finbot | OpenAI client initialized successfully
 2026-05-27 14:03:10,972 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
 2026-05-27 14:03:15,813 | INFO | finbot | OpenAI client initialized successfully
+2026-05-27 16:00:55,207 | INFO | finbot | Running market summary...
+2026-05-27 16:00:56,945 | WARNING | finbot | Failed to fetch S&P 500: 'No time zone found with key America/New_York'
+2026-05-27 16:00:57,341 | WARNING | finbot | Failed to fetch Nasdaq: 'No time zone found with key America/New_York'
+2026-05-27 16:00:57,643 | WARNING | finbot | Failed to fetch Dow Jones: 'No time zone found with key America/New_York'
+2026-05-27 16:01:00,898 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-27 16:01:00,909 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-27 16:01:00,910 | INFO | finbot | Market summary posted
+2026-05-27 18:00:55,836 | INFO | finbot | Fetching YouTube clips...
+2026-05-27 18:01:07,304 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-27 18:01:07,326 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 18:01:09,687 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-27 18:01:09,717 | INFO | finbot | Posted clip: Confused About Market Trend? Here’s What Traders S...
+2026-05-27 18:01:14,745 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 18:01:20,616 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-27 18:01:20,634 | INFO | finbot | Posted clip: Metal Stocks: NMDC,Vedanta,GMDC में से कौन सा मेटल...
+2026-05-27 18:01:25,656 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 18:01:30,669 | ERROR | finbot | Failed to process clip ZgvvAS2cB_M: Timed out
+2026-05-27 18:01:30,680 | INFO | finbot | YouTube clip fetch complete
+2026-05-27 19:30:56,392 | INFO | finbot | Checking for breaking news...
+2026-05-27 19:30:56,412 | INFO | finbot | Fetching markets feeds...
+2026-05-27 19:30:59,104 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-27 19:31:03,918 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-27 19:31:08,445 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-27 19:31:12,265 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-27 19:31:20,448 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-27 19:31:22,942 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-27 19:31:24,287 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-27 19:31:24,287 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-27 19:31:25,991 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-27 19:31:27,272 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-27 19:31:31,554 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-27 19:31:34,917 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-27 19:31:38,447 | ERROR | finbot | Failed to fetch feed https://www.artificialintelligence-news.com/feed/: Cannot connect to host www.artificialintelligence-news.com:443 ssl:default [None]
+2026-05-27 19:31:40,795 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-27 19:31:40,795 | INFO | finbot | Fetching crypto feeds...
+2026-05-27 19:31:49,297 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-27 19:31:56,080 | INFO | finbot | Fetched 10 from The Block
+2026-05-27 19:31:58,671 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-27 19:32:00,127 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-27 19:32:07,588 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-27 19:32:07,591 | INFO | finbot | Fetching macro feeds...
+2026-05-27 19:32:10,071 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-27 19:32:11,532 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-27 19:32:13,713 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-27 19:32:16,150 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-27 19:32:16,150 | INFO | finbot | Total articles fetched: 167
+2026-05-27 19:32:16,151 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 19:32:16,151 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 19:32:16,151 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 19:32:16,151 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 19:32:16,152 | WARNING | finbot | AI client not available, skipping analysis
