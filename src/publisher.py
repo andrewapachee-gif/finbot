@@ -213,11 +213,9 @@ class Publisher:
             success = await self.send_video(video_path, caption)
         else:
             # Fallback: send thumbnail with link
-            success = await bot.bot.send_photo(
-                chat_id=bot.channel_id,
+            success = await bot.send_photo(
                 photo=clip.get('thumbnail', ''),
-                caption=caption,
-                parse_mode='HTML'
+                caption=caption
             )
             
         if success:

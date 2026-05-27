@@ -1,13 +1,14 @@
 import asyncio
 import schedule
 import time
+import json
 import logging
 from datetime import datetime, timedelta
 from typing import List, Dict
 from config import (
     DAILY_DIGEST_TIME, ENABLE_WEEKLY_ROUNDUP,
     WEEKLY_ROUNDUP_DAY, WEEKLY_ROUNDUP_TIME,
-    POSTING_MODE, logger
+    POSTING_MODE, logger, DATA_DIR
 )
 from rss_fetcher import fetcher
 from youtube_fetcher import youtube_fetcher
@@ -25,46 +26,55 @@ class Scheduler:
 
     async def run_youtube_clips(self):
         """Fetch and post YouTube clips."""
+        # Prevent concurrent execution
+        if getattr(self, '_youtube_running', False):
+            logger.warning("YouTube clip fetch already running, skipping")
+            return
+        
+        self._youtube_running = True
         logger.info("Fetching YouTube clips...")
         
-        await youtube_fetcher.initialize()
-        
-        # Fetch unique clips
-        clips = await youtube_fetcher.fetch_unique_clips()
-        
-        if not clips:
-            logger.info("No new clips found")
-            await youtube_fetcher.close()
-            return
+        try:
+            await youtube_fetcher.initialize()
             
-        # Download and trim each clip (if tools available)
-        for clip in clips:
-            try:
-                video_path = await trimmer.auto_trim(
-                    clip['video_id'], 
-                    clip['title']
-                )
+            # Fetch unique clips
+            clips = await youtube_fetcher.fetch_unique_clips()
+            
+            if not clips:
+                logger.info("No new clips found")
+                await youtube_fetcher.close()
+                return
                 
-                # Post to channel (video or thumbnail fallback)
-                if POSTING_MODE == 'auto':
-                    await publisher.post_youtube_clip(clip, str(video_path) if video_path else None)
-                elif POSTING_MODE == 'queue':
-                    # Add to queue with video path
-                    clip['video_path'] = str(video_path) if video_path else None
-                    queue_manager.add_to_queue(clip)
-                    logger.info(f"Added clip to queue: {clip['title'][:50]}...")
+            # Download and trim each clip (if tools available)
+            for clip in clips:
+                try:
+                    video_path = await trimmer.auto_trim(
+                        clip['video_id'], 
+                        clip['title']
+                    )
                     
-                # Rate limit
-                await asyncio.sleep(5)
-                
-            except Exception as e:
-                logger.error(f"Failed to process clip {clip['video_id']}: {e}")
-                
-        # Cleanup old clips
-        trimmer.cleanup_old_clips()
-        
-        await youtube_fetcher.close()
-        logger.info("YouTube clip fetch complete")
+                    # Post to channel (video or thumbnail fallback)
+                    if POSTING_MODE == 'auto':
+                        await publisher.post_youtube_clip(clip, str(video_path) if video_path else None)
+                    elif POSTING_MODE == 'queue':
+                        # Add to queue with video path
+                        clip['video_path'] = str(video_path) if video_path else None
+                        queue_manager.add_to_queue(clip)
+                        logger.info(f"Added clip to queue: {clip['title'][:50]}...")
+                        
+                    # Rate limit between posts
+                    await asyncio.sleep(10)
+                    
+                except Exception as e:
+                    logger.error(f"Failed to process clip {clip['video_id']}: {e}")
+                    
+            # Cleanup old clips
+            trimmer.cleanup_old_clips()
+            
+            await youtube_fetcher.close()
+            logger.info("YouTube clip fetch complete")
+        finally:
+            self._youtube_running = False
 
     async def run_daily_digest(self):
         """Fetch and post daily digest."""
@@ -178,14 +188,8 @@ class Scheduler:
             lambda: asyncio.create_task(self.run_market_summary())
         )
 
-        # YouTube clips (4x daily for more content)
-        schedule.every().day.at("06:00").do(
-            lambda: asyncio.create_task(self.run_youtube_clips())
-        )
+        # YouTube clips (2x daily to conserve quota)
         schedule.every().day.at("10:00").do(
-            lambda: asyncio.create_task(self.run_youtube_clips())
-        )
-        schedule.every().day.at("14:00").do(
             lambda: asyncio.create_task(self.run_youtube_clips())
         )
         schedule.every().day.at("18:00").do(
@@ -227,10 +231,34 @@ class Scheduler:
 
         logger.info("Scheduler started")
         
-        # Run initial tasks on startup
-        logger.info("Running startup tasks...")
-        await self.run_youtube_clips()
-        await self.run_daily_digest()
+        # Run initial tasks on startup (skip if already ran recently)
+        startup_file = DATA_DIR / "last_startup.json"
+        skip_startup = False
+        if startup_file.exists():
+            try:
+                with open(startup_file, 'r') as f:
+                    data = json.load(f)
+                    last_run = datetime.fromisoformat(data.get('last_startup', '2000-01-01'))
+                    if (datetime.utcnow() - last_run).total_seconds() < 3600:  # 1 hour
+                        skip_startup = True
+                        logger.info("Skipping startup tasks (ran recently)")
+            except:
+                pass
+        
+        if not skip_startup:
+            logger.info("Running startup tasks...")
+            try:
+                await self.run_youtube_clips()
+            except Exception as e:
+                logger.error(f"Startup YouTube clips failed: {e}")
+            try:
+                await self.run_daily_digest()
+            except Exception as e:
+                logger.error(f"Startup digest failed: {e}")
+            
+            # Record startup time
+            with open(startup_file, 'w') as f:
+                json.dump({'last_startup': datetime.utcnow().isoformat()}, f)
 
         while self.running:
             schedule.run_pending()

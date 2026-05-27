@@ -19,21 +19,41 @@ class AIFilter:
         
     def _init_client(self):
         """Initialize AI client based on provider."""
+        logger.info(f"Initializing AI client: provider={self.provider}, model={self.model}")
+        
+        if self.provider == "none":
+            logger.warning("AI provider set to 'none'. Content filtering disabled.")
+            return
+            
         if self.provider == "openai" and OPENAI_API_KEY:
-            import openai
-            self.client = openai.OpenAI(api_key=OPENAI_API_KEY)
+            try:
+                import openai
+                self.client = openai.OpenAI(api_key=OPENAI_API_KEY)
+                logger.info("OpenAI client initialized successfully")
+            except Exception as e:
+                logger.error(f"Failed to initialize OpenAI client: {e}")
+                self.client = None
         elif self.provider == "anthropic" and ANTHROPIC_API_KEY:
-            import anthropic
-            self.client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+            try:
+                import anthropic
+                self.client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+                logger.info("Anthropic client initialized successfully")
+            except Exception as e:
+                logger.error(f"Failed to initialize Anthropic client: {e}")
+                self.client = None
         elif self.provider == "mistral" and MISTRAL_API_KEY:
-            # Mistral uses OpenAI-compatible API
-            import openai
-            self.client = openai.OpenAI(
-                api_key=MISTRAL_API_KEY,
-                base_url="https://api.mistral.ai/v1"
-            )
+            try:
+                import openai
+                self.client = openai.OpenAI(
+                    api_key=MISTRAL_API_KEY,
+                    base_url="https://api.mistral.ai/v1"
+                )
+                logger.info("Mistral client initialized successfully")
+            except Exception as e:
+                logger.error(f"Failed to initialize Mistral client: {e}")
+                self.client = None
         else:
-            logger.warning("No AI provider configured. Content filtering disabled.")
+            logger.warning(f"No AI provider configured (provider={self.provider}, keys available: openai={bool(OPENAI_API_KEY)}, anthropic={bool(ANTHROPIC_API_KEY)}, mistral={bool(MISTRAL_API_KEY)}). Content filtering disabled.")
             
     def _build_prompt(self, article: Dict) -> str:
         """Build prompt for AI analysis."""
@@ -65,7 +85,7 @@ Respond in JSON format:
     async def analyze_article(self, article: Dict) -> Optional[Dict]:
         """Analyze a single article with AI."""
         if not self.client:
-            logger.warning("AI client not available, skipping analysis")
+            logger.warning(f"AI client not available, skipping analysis for: {article.get('title', 'Unknown')[:50]}...")
             return None
             
         try:

@@ -115,10 +115,17 @@ class YouTubeClipFetcher:
                 if resp.status == 200:
                     data = await resp.json()
                     return self._parse_search_results(data)
+                elif resp.status == 429:
+                    logger.warning(f"YouTube API rate limit hit (429). Waiting 60s...")
+                    await asyncio.sleep(60)
+                    return []
                 else:
                     text = await resp.text()
                     logger.warning(f"YouTube API returned {resp.status}: {text[:200]}")
                     return []
+        except asyncio.TimeoutError:
+            logger.error(f"YouTube search timeout for query: {query}")
+            return []
         except Exception as e:
             logger.error(f"YouTube search failed: {e}")
             return []
@@ -207,8 +214,8 @@ class YouTubeClipFetcher:
         """Fetch diverse clips from multiple search queries."""
         all_clips = []
         
-        # Search each category
-        for category in CLIP_CATEGORIES:
+        # Search each category with delay between searches
+        for i, category in enumerate(CLIP_CATEGORIES):
             # Rotate queries for variety
             queries = [
                 f"{category} investing tips",
@@ -220,9 +227,12 @@ class YouTubeClipFetcher:
             day_index = datetime.utcnow().weekday()
             query = queries[day_index % len(queries)]
             
-            clips = await self.search_clips(query, max_results=15)
+            clips = await self.search_clips(query, max_results=10)
             all_clips.extend(clips)
-            await asyncio.sleep(0.5)  # Rate limit
+            
+            # Rate limit between categories to avoid quota exhaustion
+            if i < len(CLIP_CATEGORIES) - 1:
+                await asyncio.sleep(2)
             
         # Get details for all clips
         video_ids = [c['video_id'] for c in all_clips if not self.is_duplicate(c['video_id'])]
