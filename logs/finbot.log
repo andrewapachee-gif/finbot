@@ -71231,3 +71231,138 @@ telegram.error.TimedOut: Timed out
 2026-05-27 01:32:19,325 | WARNING | finbot | AI client not available, skipping analysis
 2026-05-27 01:32:19,325 | WARNING | finbot | AI client not available, skipping analysis
 2026-05-27 01:32:19,325 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 06:00:52,422 | INFO | finbot | Fetching YouTube clips...
+2026-05-27 06:00:54,508 | WARNING | finbot | YouTube API returned 429: {
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:340
+2026-05-27 06:00:55,455 | WARNING | finbot | YouTube API returned 429: {
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:340
+2026-05-27 06:00:56,357 | WARNING | finbot | YouTube API returned 429: {
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:340
+2026-05-27 06:00:57,281 | WARNING | finbot | YouTube API returned 429: {
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:340
+2026-05-27 06:00:58,127 | WARNING | finbot | YouTube API returned 429: {
+  "error": {
+    "code": 429,
+    "message": "Quota exceeded for quota metric 'Search Queries' and limit 'Search Queries per day' of service 'youtube.googleapis.com' for consumer 'project_number:340
+2026-05-27 06:00:58,631 | INFO | finbot | No new clips found
+2026-05-27 06:00:58,632 | INFO | finbot | No new clips found
+2026-05-27 07:30:52,813 | INFO | finbot | Checking for breaking news...
+2026-05-27 07:30:52,844 | INFO | finbot | Fetching markets feeds...
+2026-05-27 07:30:54,949 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-27 07:30:57,951 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-27 07:30:59,549 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-27 07:31:02,208 | INFO | finbot | Fetched 8 from Financial Times
+2026-05-27 07:31:06,781 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-27 07:31:08,342 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-27 07:31:09,977 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-27 07:31:09,978 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-27 07:31:11,405 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-27 07:31:13,031 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-27 07:31:15,790 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-27 07:31:18,530 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-27 07:31:49,079 | ERROR | finbot | Failed to fetch feed https://www.artificialintelligence-news.com/feed/: 
+2026-05-27 07:31:51,747 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-27 07:31:51,747 | INFO | finbot | Fetching crypto feeds...
+2026-05-27 07:31:54,246 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-27 07:31:55,827 | INFO | finbot | Fetched 10 from The Block
+2026-05-27 07:31:57,426 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-27 07:31:59,104 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-27 07:32:01,336 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-27 07:32:01,336 | INFO | finbot | Fetching macro feeds...
+2026-05-27 07:32:03,903 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-27 07:32:05,860 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-27 07:32:07,432 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-27 07:32:08,918 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-27 07:32:08,919 | INFO | finbot | Total articles fetched: 165
+2026-05-27 07:32:08,919 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 07:32:08,920 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 07:32:08,920 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 07:32:08,920 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 07:32:08,920 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 08:48:25,245 | INFO | finbot | Telegram bot initialized
+2026-05-27 08:48:27,262 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-27 08:48:27,271 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-27 09:00:53,236 | INFO | finbot | Running daily digest...
+2026-05-27 09:00:53,273 | INFO | finbot | Fetching markets feeds...
+2026-05-27 09:00:53,287 | INFO | finbot | Running market summary...
+2026-05-27 09:00:55,255 | WARNING | finbot | Failed to fetch S&P 500: 'No time zone found with key America/New_York'
+2026-05-27 09:00:55,622 | WARNING | finbot | Failed to fetch Nasdaq: 'No time zone found with key America/New_York'
+2026-05-27 09:00:56,026 | WARNING | finbot | Failed to fetch Dow Jones: 'No time zone found with key America/New_York'
+2026-05-27 09:00:58,790 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f0444fb10>
+2026-05-27 09:00:58,792 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f02b4b2f0>, 144655.718712236)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f0444f750>
+2026-05-27 09:00:58,845 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-27 09:00:59,609 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-27 09:00:59,625 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-27 09:00:59,626 | INFO | finbot | Market summary posted
+2026-05-27 10:00:53,518 | INFO | finbot | Fetching YouTube clips...
+2026-05-27 10:01:01,758 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-27 10:01:01,782 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 10:01:04,348 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-27 10:01:04,381 | INFO | finbot | Posted clip: 곧 종전인데 환율은 1500원‥이재명 &quot;외국인 주식 매도 영향&quot; #Sho...
+2026-05-27 10:01:09,410 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 10:01:12,025 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-27 10:01:12,048 | INFO | finbot | Posted clip: Billionaire Jeff Bezos arguing for lower taxes?...
+2026-05-27 10:01:17,080 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 10:01:20,075 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-27 10:01:20,088 | INFO | finbot | Posted clip: Anuj Singhal- प्रोमोटर्स ने खरीदे शेयर, क्या तेजी ...
+2026-05-27 10:01:25,111 | INFO | finbot | YouTube clip fetch complete
+2026-05-27 13:30:54,463 | INFO | finbot | Checking for breaking news...
+2026-05-27 13:30:54,521 | INFO | finbot | Fetching markets feeds...
+2026-05-27 13:30:57,340 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-27 13:31:01,241 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-27 13:31:03,429 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-27 13:31:06,320 | INFO | finbot | Fetched 9 from Financial Times
+2026-05-27 13:31:12,153 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-27 13:31:14,253 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-27 13:31:16,252 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-27 13:31:16,252 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-27 13:31:18,894 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-27 13:31:20,888 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-27 13:31:24,909 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-27 13:31:29,504 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-27 13:32:00,081 | ERROR | finbot | Failed to fetch feed https://www.artificialintelligence-news.com/feed/: 
+2026-05-27 13:32:02,086 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-27 13:32:02,086 | INFO | finbot | Fetching crypto feeds...
+2026-05-27 13:32:04,482 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-27 13:32:06,511 | INFO | finbot | Fetched 10 from The Block
+2026-05-27 13:32:08,460 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-27 13:32:10,312 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-27 13:32:12,840 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-27 13:32:12,841 | INFO | finbot | Fetching macro feeds...
+2026-05-27 13:32:15,822 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-27 13:32:18,179 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-27 13:32:20,078 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-27 13:32:22,170 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-27 13:32:22,171 | INFO | finbot | Total articles fetched: 166
+2026-05-27 13:32:22,172 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 13:32:22,172 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 13:32:22,172 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 13:32:22,172 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 13:32:22,172 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-27 14:00:54,595 | INFO | finbot | Fetching YouTube clips...
+2026-05-27 14:01:03,076 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-27 14:01:03,096 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 14:01:05,977 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-27 14:01:05,991 | INFO | finbot | Posted clip: LES MARKET MAKERS VENDENT LE BITCOIN !! 🚨 #bitcoin...
+2026-05-27 14:01:11,021 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 14:01:14,636 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-27 14:01:14,660 | INFO | finbot | Posted clip: 🚨 XRP LEDGER CHOSEN BY BANKS!!! ETHEREUM SENTIMENT...
+2026-05-27 14:01:19,691 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-27 14:01:22,143 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-27 14:01:22,153 | INFO | finbot | Posted clip: BITCOIN BIG BREAKOUT | Bitcoin Uptrend Analysis | ...
+2026-05-27 14:01:27,175 | INFO | finbot | YouTube clip fetch complete
+2026-05-27 14:02:07,974 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-27 14:02:14,309 | INFO | finbot | OpenAI client initialized successfully
+2026-05-27 14:03:10,972 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-27 14:03:15,813 | INFO | finbot | OpenAI client initialized successfully
