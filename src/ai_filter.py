@@ -84,8 +84,13 @@ Respond in JSON format:
 
     async def analyze_article(self, article: Dict) -> Optional[Dict]:
         """Analyze a single article with AI."""
+        # Re-init client if None (connection may have dropped)
         if not self.client:
-            logger.warning(f"AI client not available, skipping analysis for: {article.get('title', 'Unknown')[:50]}...")
+            logger.warning("AI client not available, attempting re-initialization...")
+            self._init_client()
+            
+        if not self.client:
+            logger.warning(f"AI client still not available after re-init, skipping: {article.get('title', 'Unknown')[:50]}...")
             return None
             
         try:
