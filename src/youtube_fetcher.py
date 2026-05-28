@@ -25,7 +25,9 @@ YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 MAX_CLIP_DURATION_SEC = int(os.getenv("MAX_CLIP_DURATION", "120"))  # 2 min max
 MIN_CLIP_DURATION_SEC = int(os.getenv("MIN_CLIP_DURATION", "15"))   # 15 sec min
 MAX_CLIPS_PER_RUN = int(os.getenv("MAX_CLIPS_PER_RUN", "3"))
-CLIP_CATEGORIES = os.getenv("CLIP_CATEGORIES", "finance,investing,stock market,crypto,trading").split(",")
+# Reduced categories to stay under YouTube API quota (100 searches/day)
+# 5 runs/day × 2 categories = 10 searches, well under limit
+CLIP_CATEGORIES = os.getenv("CLIP_CATEGORIES", "finance,crypto").split(",")
 
 # Channel diversity - track last N channels to avoid repetition
 CHANNEL_HISTORY_FILE = DATA_DIR / "youtube_channels.json"
@@ -215,24 +217,26 @@ class YouTubeClipFetcher:
         all_clips = []
         
         # Search each category with delay between searches
+        # Rotating 2 categories per run to stay under API quota
+        # 5 runs/day × 2 categories = 10 searches (limit: 100/day)
         for i, category in enumerate(CLIP_CATEGORIES):
-            # Rotate queries for variety
+            # Rotate queries for variety based on hour of day
             queries = [
                 f"{category} investing tips",
                 f"{category} market analysis",
                 f"{category} news today",
                 f"{category} explained"
             ]
-            # Pick one query per category based on day of week for variety
-            day_index = datetime.utcnow().weekday()
-            query = queries[day_index % len(queries)]
+            # Pick query based on hour for more variety across runs
+            hour_index = datetime.utcnow().hour
+            query = queries[hour_index % len(queries)]
             
-            clips = await self.search_clips(query, max_results=10)
+            clips = await self.search_clips(query, max_results=8)
             all_clips.extend(clips)
             
             # Rate limit between categories to avoid quota exhaustion
             if i < len(CLIP_CATEGORIES) - 1:
-                await asyncio.sleep(2)
+                await asyncio.sleep(3)
             
         # Get details for all clips
         video_ids = [c['video_id'] for c in all_clips if not self.is_duplicate(c['video_id'])]
