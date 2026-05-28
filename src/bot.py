@@ -117,13 +117,15 @@ class TelegramBot:
         
         posted_count = len(youtube_fetcher.posted_videos)
         recent_channels = youtube_fetcher.channel_history[-10:]
+        quota_status = youtube_fetcher.quota.get_status()
         
         text = (
             f"🎬 YouTube Clip Stats:\n\n"
             f"Posted clips: {posted_count}\n"
             f"Recent channels: {len(recent_channels)}\n"
-            f"Max clips/run: 3\n"
-            f"Schedule: 10:00, 18:00 UTC\n\n"
+            f"Max clips/run: {MAX_CLIPS_PER_RUN}\n"
+            f"Schedule: 5x daily (US ET)\n\n"
+            f"{quota_status}\n\n"
             f"Use /fetchclips to manually trigger fetch"
         )
         await update.message.reply_text(text)

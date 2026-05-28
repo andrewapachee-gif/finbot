@@ -1,11 +1,3 @@
-"""
-YouTube clip sourcing module for FinBot.
-
-Searches for investment-related clips from unique channels,
-tracks posted videos to avoid duplicates, and provides
-download URLs for trimming.
-"""
-
 import os
 import json
 import asyncio
@@ -25,9 +17,13 @@ YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 MAX_CLIP_DURATION_SEC = int(os.getenv("MAX_CLIP_DURATION", "120"))  # 2 min max
 MIN_CLIP_DURATION_SEC = int(os.getenv("MIN_CLIP_DURATION", "15"))   # 15 sec min
 MAX_CLIPS_PER_RUN = int(os.getenv("MAX_CLIPS_PER_RUN", "3"))
-# Reduced categories to stay under YouTube API quota (100 searches/day)
-# 5 runs/day × 2 categories = 10 searches, well under limit
-CLIP_CATEGORIES = os.getenv("CLIP_CATEGORIES", "finance,crypto").split(",")
+# Reduced to 1 category per run to stay well under YouTube API quota
+# 5 runs/day × 1 search + 1 details call = 10 API calls/day (limit: 100/day)
+CLIP_CATEGORIES = os.getenv("CLIP_CATEGORIES", "finance").split(",")
+
+# API Quota tracking
+QUOTA_FILE = DATA_DIR / "youtube_quota.json"
+QUOTA_LIMIT = 100  # Daily search quota limit
 
 # Channel diversity - track last N channels to avoid repetition
 CHANNEL_HISTORY_FILE = DATA_DIR / "youtube_channels.json"
@@ -40,6 +36,81 @@ POSTED_VIDEOS_FILE = DATA_DIR / "posted_videos.json"
 CHANNEL_WHITELIST = os.getenv("CHANNEL_WHITELIST", "").split(",") if os.getenv("CHANNEL_WHITELIST") else []
 
 
+class QuotaTracker:
+    """Track YouTube API usage to prevent quota exhaustion."""
+    
+    def __init__(self):
+        self.quota_file = QUOTA_FILE
+        self.usage = self._load_usage()
+        
+    def _load_usage(self) -> Dict:
+        """Load quota usage from file."""
+        if self.quota_file.exists():
+            with open(self.quota_file, 'r') as f:
+                return json.load(f)
+        return {
+            'date': datetime.utcnow().strftime('%Y-%m-%d'),
+            'search_calls': 0,
+            'details_calls': 0,
+            'total_calls': 0,
+            'history': []
+        }
+    
+    def _save_usage(self):
+        """Save quota usage."""
+        with open(self.quota_file, 'w') as f:
+            json.dump(self.usage, f, indent=2)
+    
+    def check_and_reset(self):
+        """Check if it's a new day and reset quota."""
+        today = datetime.utcnow().strftime('%Y-%m-%d')
+        if self.usage.get('date') != today:
+            # New day - reset
+            self.usage = {
+                'date': today,
+                'search_calls': 0,
+                'details_calls': 0,
+                'total_calls': 0,
+                'history': self.usage.get('history', [])[-30:]  # Keep last 30 days
+            }
+            self._save_usage()
+            logger.info(f"🔄 YouTube API quota reset for {today}")
+    
+    def record_call(self, call_type: str = 'search'):
+        """Record an API call."""
+        self.check_and_reset()
+        
+        if call_type == 'search':
+            self.usage['search_calls'] += 1
+        elif call_type == 'details':
+            self.usage['details_calls'] += 1
+        
+        self.usage['total_calls'] += 1
+        self._save_usage()
+    
+    def can_make_call(self, call_type: str = 'search') -> bool:
+        """Check if we can make another API call."""
+        self.check_and_reset()
+        
+        # Leave 20% buffer (use max 80 calls out of 100)
+        buffer_limit = int(QUOTA_LIMIT * 0.8)
+        
+        if self.usage['total_calls'] >= buffer_limit:
+            logger.warning(f"⚠️ YouTube API quota near limit: {self.usage['total_calls']}/{buffer_limit} (buffer)")
+            return False
+        
+        return True
+    
+    def get_status(self) -> str:
+        """Get quota status for display."""
+        self.check_and_reset()
+        
+        remaining = QUOTA_LIMIT - self.usage['total_calls']
+        buffer_remaining = int(QUOTA_LIMIT * 0.8) - self.usage['total_calls']
+        
+        return f"📊 YouTube API: {self.usage['total_calls']} used, {remaining} remaining ({buffer_remaining} buffer)"
+
+
 class YouTubeClipFetcher:
     """Fetches investment-related clips from YouTube."""
     
@@ -48,6 +119,7 @@ class YouTubeClipFetcher:
         self.session = None
         self.channel_history = self._load_channel_history()
         self.posted_videos = self._load_posted_videos()
+        self.quota = QuotaTracker()
         
     def _load_channel_history(self) -> List[str]:
         """Load recently posted channel IDs."""
@@ -59,7 +131,6 @@ class YouTubeClipFetcher:
         
     def _save_channel_history(self):
         """Save channel history (keep last N)."""
-        # Trim to max
         channels = self.channel_history[-MAX_CHANNEL_HISTORY:]
         with open(CHANNEL_HISTORY_FILE, 'w') as f:
             json.dump({'channels': channels}, f)
@@ -100,6 +171,11 @@ class YouTubeClipFetcher:
         if not self.api_key:
             logger.error("YOUTUBE_API_KEY not set")
             return []
+        
+        # Check quota before making call
+        if not self.quota.can_make_call('search'):
+            logger.warning("⛔ Skipping YouTube search - quota buffer reached")
+            return []
             
         params = {
             'key': self.api_key,
@@ -115,11 +191,20 @@ class YouTubeClipFetcher:
         try:
             async with self.session.get(YOUTUBE_SEARCH_URL, params=params) as resp:
                 if resp.status == 200:
+                    self.quota.record_call('search')
                     data = await resp.json()
                     return self._parse_search_results(data)
                 elif resp.status == 429:
-                    logger.warning(f"YouTube API rate limit hit (429). Waiting 60s...")
-                    await asyncio.sleep(60)
+                    logger.warning("🚫 YouTube API rate limit hit (429). Pausing searches for 1 hour.")
+                    # Mark quota as exhausted
+                    self.quota.usage['total_calls'] = QUOTA_LIMIT
+                    self.quota._save_usage()
+                    await asyncio.sleep(3600)
+                    return []
+                elif resp.status == 403:
+                    logger.error("🚫 YouTube API quota exceeded (403). Stopping searches for today.")
+                    self.quota.usage['total_calls'] = QUOTA_LIMIT
+                    self.quota._save_usage()
                     return []
                 else:
                     text = await resp.text()
@@ -164,6 +249,11 @@ class YouTubeClipFetcher:
         """Get duration and stats for videos."""
         if not video_ids or not self.api_key:
             return {}
+        
+        # Check quota before making call
+        if not self.quota.can_make_call('details'):
+            logger.warning("⛔ Skipping video details - quota buffer reached")
+            return {}
             
         # Batch in groups of 50 (API limit)
         all_details = {}
@@ -181,6 +271,7 @@ class YouTubeClipFetcher:
             try:
                 async with self.session.get(YOUTUBE_VIDEOS_URL, params=params) as resp:
                     if resp.status == 200:
+                        self.quota.record_call('details')
                         data = await resp.json()
                         for item in data.get('items', []):
                             vid = item['id']
@@ -195,6 +286,16 @@ class YouTubeClipFetcher:
                                 'category_id': item['snippet'].get('categoryId', ''),
                             }
                             all_details[vid] = details
+                    elif resp.status == 429:
+                        logger.warning("🚫 YouTube API rate limit (429) on details. Pausing.")
+                        self.quota.usage['total_calls'] = QUOTA_LIMIT
+                        self.quota._save_usage()
+                        break
+                    elif resp.status == 403:
+                        logger.error("🚫 YouTube API quota exceeded (403) on details.")
+                        self.quota.usage['total_calls'] = QUOTA_LIMIT
+                        self.quota._save_usage()
+                        break
             except Exception as e:
                 logger.error(f"Failed to get video details: {e}")
                 
@@ -203,7 +304,6 @@ class YouTubeClipFetcher:
     def _parse_duration(self, iso_duration: str) -> int:
         """Parse ISO 8601 duration to seconds."""
         import re
-        # PT1M30S -> 90
         match = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', iso_duration)
         if not match:
             return 0
@@ -216,10 +316,11 @@ class YouTubeClipFetcher:
         """Fetch diverse clips from multiple search queries."""
         all_clips = []
         
-        # Search each category with delay between searches
-        # Rotating 2 categories per run to stay under API quota
-        # 5 runs/day × 2 categories = 10 searches (limit: 100/day)
-        for i, category in enumerate(CLIP_CATEGORIES):
+        # Only search 1 category per run to minimize API usage
+        # 5 runs/day × 1 search + 1 details = 10 calls (limit: 100, using 80 buffer)
+        categories_to_search = CLIP_CATEGORIES[:1]  # Only first category
+        
+        for i, category in enumerate(categories_to_search):
             # Rotate queries for variety based on hour of day
             queries = [
                 f"{category} investing tips",
@@ -227,15 +328,14 @@ class YouTubeClipFetcher:
                 f"{category} news today",
                 f"{category} explained"
             ]
-            # Pick query based on hour for more variety across runs
             hour_index = datetime.utcnow().hour
             query = queries[hour_index % len(queries)]
             
             clips = await self.search_clips(query, max_results=8)
             all_clips.extend(clips)
             
-            # Rate limit between categories to avoid quota exhaustion
-            if i < len(CLIP_CATEGORIES) - 1:
+            # Rate limit between searches
+            if i < len(categories_to_search) - 1:
                 await asyncio.sleep(3)
             
         # Get details for all clips
@@ -287,13 +387,14 @@ class YouTubeClipFetcher:
             if ch not in used_channels and ch not in self.channel_history[-10:]:
                 selected.append(clip)
                 used_channels.add(ch)
-            elif len(used_channels) >= 3:  # After 3 unique channels, allow repeats
+            elif len(used_channels) >= 3:
                 selected.append(clip)
                 
             if len(selected) >= MAX_CLIPS_PER_RUN:
                 break
                 
         logger.info(f"Selected {len(selected)} clips from {len(used_channels)} unique channels")
+        logger.info(self.quota.get_status())
         return selected
         
     def _score_clips(self, clips: List[Dict]) -> List[Dict]:
@@ -303,13 +404,13 @@ class YouTubeClipFetcher:
         for clip in clips:
             score = 0
             
-            # Engagement score (likes/views ratio + raw views)
+            # Engagement score
             views = clip.get('view_count', 0)
             likes = clip.get('like_count', 0)
             if views > 0:
-                engagement = (likes / views) * 1000  # Per 1000 views
-                score += min(engagement * 10, 100)  # Cap at 100
-                score += min(views / 1000, 50)  # View count bonus, capped
+                engagement = (likes / views) * 1000
+                score += min(engagement * 10, 100)
+                score += min(views / 1000, 50)
                 
             # Recency bonus
             try:
@@ -335,7 +436,6 @@ class YouTubeClipFetcher:
             
             clip['score'] = score
             
-        # Sort by score descending
         return sorted(clips, key=lambda x: x['score'], reverse=True)
         
     async def close(self):
