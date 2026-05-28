@@ -198,6 +198,8 @@ class Scheduler:
             logger.info("War coverage check complete")
         except Exception as e:
             logger.error(f"War coverage check failed: {e}")
+
+    def setup_schedule(self):
         """Setup scheduled jobs in US Eastern Time (5x daily clips)."""
         # Convert US times to UTC for schedule library
         # US ET: 06:00, 10:00, 14:00, 18:00, 22:00 -> UTC: 10:00, 14:00, 18:00, 22:00, 02:00
