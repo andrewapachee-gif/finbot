@@ -78,7 +78,7 @@ class DirectorySubmitter:
                 return json.load(f)
         return {
             'submissions': [],
-            'pending': self.directories,
+            'pending': [],
             'completed': [],
             'failed': []
         }
@@ -177,9 +177,9 @@ class DirectorySubmitter:
     def get_progress(self) -> str:
         """Get submission progress."""
         total = len(self.directories)
-        completed = len(self.state['completed'])
-        pending = len(self.state['pending'])
-        failed = len(self.state['failed'])
+        completed = len(self.state.get('completed', []))
+        pending = len(self.state.get('pending', []))
+        failed = len(self.state.get('failed', []))
         
         text = f"""📊 <b>Directory Submission Progress</b>
 
@@ -190,7 +190,7 @@ class DirectorySubmitter:
 <b>Submitted:</b>
 """
         
-        for sub in self.state['submissions']:
+        for sub in self.state.get('submissions', []):
             emoji = '✅' if sub['success'] else '❌'
             text += f"{emoji} {sub['directory']} ({sub['timestamp'][:10]})\n"
         
