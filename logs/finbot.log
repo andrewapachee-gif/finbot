@@ -71417,3 +71417,37 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444f750>
 2026-05-27 19:32:16,151 | WARNING | finbot | AI client not available, skipping analysis
 2026-05-27 19:32:16,151 | WARNING | finbot | AI client not available, skipping analysis
 2026-05-27 19:32:16,152 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 00:00:57,929 | INFO | finbot | Daily post counter reset
+2026-05-28 01:30:58,423 | INFO | finbot | Checking for breaking news...
+2026-05-28 01:30:58,461 | INFO | finbot | Fetching markets feeds...
+2026-05-28 01:31:16,376 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-28 01:31:19,996 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-28 01:31:21,540 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-28 01:31:23,795 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-28 01:31:31,733 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-28 01:31:33,427 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-28 01:31:34,907 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-28 01:31:34,907 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-28 01:31:38,976 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-28 01:31:40,639 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-28 01:31:43,211 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-28 01:31:54,533 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-28 01:32:00,663 | INFO | finbot | Fetched 10 from AI News
+2026-05-28 01:32:02,215 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-28 01:32:02,216 | INFO | finbot | Fetching crypto feeds...
+2026-05-28 01:32:04,414 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-28 01:32:05,918 | INFO | finbot | Fetched 10 from The Block
+2026-05-28 01:32:07,610 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-28 01:32:09,154 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-28 01:32:13,387 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-28 01:32:13,387 | INFO | finbot | Fetching macro feeds...
+2026-05-28 01:32:16,890 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-28 01:32:18,597 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-28 01:32:21,262 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-28 01:32:23,824 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-28 01:32:23,825 | INFO | finbot | Total articles fetched: 177
+2026-05-28 01:32:23,826 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 01:32:23,826 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 01:32:23,826 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 01:32:23,826 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 01:32:23,826 | WARNING | finbot | AI client not available, skipping analysis

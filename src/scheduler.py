@@ -17,6 +17,10 @@ from ai_filter import ai_filter
 from publisher import publisher
 from queue_manager import queue_manager
 
+# US Eastern Time schedule (converted to UTC for server)
+# ET = UTC-4 (EDT) or UTC-5 (EST)
+# All times below are UTC equivalents for US ET times
+
 class Scheduler:
     """Manages scheduled tasks for the bot."""
 
@@ -174,30 +178,49 @@ class Scheduler:
         await fetcher.close()
 
     def setup_schedule(self):
-        """Setup scheduled jobs."""
-        # Daily digest
-        schedule.every().day.at(DAILY_DIGEST_TIME).do(
+        """Setup scheduled jobs in US Eastern Time (5x daily clips)."""
+        # Convert US times to UTC for schedule library
+        # US ET: 06:00, 10:00, 14:00, 18:00, 22:00 -> UTC: 10:00, 14:00, 18:00, 22:00, 02:00
+        
+        # Daily digest at 08:00 ET (12:00 UTC)
+        schedule.every().day.at("12:00").do(
             lambda: asyncio.create_task(self.run_daily_digest())
         )
 
-        # Market summary (twice daily)
-        schedule.every().day.at("09:00").do(
+        # Market summary (twice daily ET)
+        # 09:00 ET -> 13:00 UTC (pre-market open)
+        schedule.every().day.at("13:00").do(
             lambda: asyncio.create_task(self.run_market_summary())
         )
-        schedule.every().day.at("16:00").do(
+        # 16:00 ET -> 20:00 UTC (market close)
+        schedule.every().day.at("20:00").do(
             lambda: asyncio.create_task(self.run_market_summary())
         )
 
-        # YouTube clips (2x daily to conserve quota)
+        # YouTube clips (5x daily in US time)
+        # 06:00 ET -> 10:00 UTC (early morning US)
         schedule.every().day.at("10:00").do(
             lambda: asyncio.create_task(self.run_youtube_clips())
         )
+        # 10:00 ET -> 14:00 UTC (morning US)
+        schedule.every().day.at("14:00").do(
+            lambda: asyncio.create_task(self.run_youtube_clips())
+        )
+        # 14:00 ET -> 18:00 UTC (afternoon US)
         schedule.every().day.at("18:00").do(
             lambda: asyncio.create_task(self.run_youtube_clips())
         )
+        # 18:00 ET -> 22:00 UTC (evening US)
+        schedule.every().day.at("22:00").do(
+            lambda: asyncio.create_task(self.run_youtube_clips())
+        )
+        # 22:00 ET -> 02:00 UTC (late night US)
+        schedule.every().day.at("02:00").do(
+            lambda: asyncio.create_task(self.run_youtube_clips())
+        )
 
-        # Breaking news check (every 6 hours)
-        schedule.every(6).hours.do(
+        # Breaking news check (every 4 hours for faster response)
+        schedule.every(4).hours.do(
             lambda: asyncio.create_task(self.run_breaking_news_check())
         )
 
@@ -213,16 +236,19 @@ class Scheduler:
                 'sunday': schedule.every().sunday
             }
             day_func = day_map.get(WEEKLY_ROUNDUP_DAY.lower(), schedule.every().sunday)
-            day_func.at(WEEKLY_ROUNDUP_TIME).do(
+            # 18:00 ET Sunday -> 22:00 UTC
+            day_func.at("22:00").do(
                 lambda: asyncio.create_task(self.run_weekly_roundup())
             )
 
-        # Reset daily counter at midnight
-        schedule.every().day.at("00:00").do(
+        # Reset daily counter at midnight ET (04:00 UTC)
+        schedule.every().day.at("04:00").do(
             publisher.reset_daily_counter
         )
 
-        logger.info("Schedule setup complete")
+        logger.info("Schedule setup complete (US Eastern Time)")
+        logger.info("Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00")
+        logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
 
     async def run(self):
         """Run the scheduler loop."""
@@ -230,6 +256,9 @@ class Scheduler:
         self.setup_schedule()
 
         logger.info("Scheduler started")
+        logger.info("Schedule: US Eastern Time (ET)")
+        logger.info("Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00")
+        logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
         
         # Run initial tasks on startup (skip if already ran recently)
         startup_file = DATA_DIR / "last_startup.json"
