@@ -177,7 +177,27 @@ class Scheduler:
 
         await fetcher.close()
 
-    def setup_schedule(self):
+    async def run_analytics_update(self):
+        """Update analytics data."""
+        from analytics_tracker import analytics_tracker
+        
+        logger.info("Updating analytics...")
+        try:
+            await analytics_tracker.fetch_subscriber_count()
+            logger.info("Analytics update complete")
+        except Exception as e:
+            logger.error(f"Analytics update failed: {e}")
+
+    async def run_war_coverage(self):
+        """Run war coverage check."""
+        from news_war_coverage import war_monitor
+        
+        logger.info("Running war coverage check...")
+        try:
+            await war_monitor.run_war_check()
+            logger.info("War coverage check complete")
+        except Exception as e:
+            logger.error(f"War coverage check failed: {e}")
         """Setup scheduled jobs in US Eastern Time (5x daily clips)."""
         # Convert US times to UTC for schedule library
         # US ET: 06:00, 10:00, 14:00, 18:00, 22:00 -> UTC: 10:00, 14:00, 18:00, 22:00, 02:00
@@ -224,6 +244,46 @@ class Scheduler:
             lambda: asyncio.create_task(self.run_breaking_news_check())
         )
 
+        # War coverage check (every 30 minutes for real-time geopolitical news)
+        schedule.every(30).minutes.do(
+            lambda: asyncio.create_task(self.run_war_coverage())
+        )
+
+        # Analytics update (hourly)
+        schedule.every().hour.do(
+            lambda: asyncio.create_task(self.run_analytics_update())
+        )
+
+        # War coverage check (every 30 minutes for real-time geopolitical news)
+        schedule.every(30).minutes.do(
+            lambda: asyncio.create_task(self.run_war_coverage())
+        )
+
+        # Analytics update (hourly)
+        schedule.every().hour.do(
+            lambda: asyncio.create_task(self.run_analytics_update())
+        )
+
+        # War coverage check (every 30 minutes for real-time geopolitical news)
+        schedule.every(30).minutes.do(
+            lambda: asyncio.create_task(self.run_war_coverage())
+        )
+
+        # Analytics update (hourly)
+        schedule.every().hour.do(
+            lambda: asyncio.create_task(self.run_analytics_update())
+        )
+
+        # War coverage check (every 30 minutes for real-time geopolitical news)
+        schedule.every(30).minutes.do(
+            lambda: asyncio.create_task(self.run_war_coverage())
+        )
+
+        # Analytics update (hourly)
+        schedule.every().hour.do(
+            lambda: asyncio.create_task(self.run_analytics_update())
+        )
+
         # Weekly roundup
         if ENABLE_WEEKLY_ROUNDUP:
             day_map = {
@@ -249,6 +309,10 @@ class Scheduler:
         logger.info("Schedule setup complete (US Eastern Time)")
         logger.info("Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00")
         logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
+        logger.info("War coverage: every 30 min | Analytics: hourly")
+        logger.info("War coverage: every 30 min | Analytics: hourly")
+        logger.info("War coverage: every 30 min | Analytics: hourly")
+        logger.info("War coverage: every 30 min | Analytics: hourly")
 
     async def run(self):
         """Run the scheduler loop."""
@@ -259,6 +323,10 @@ class Scheduler:
         logger.info("Schedule: US Eastern Time (ET)")
         logger.info("Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00")
         logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
+        logger.info("War coverage: every 30 min | Analytics: hourly")
+        logger.info("War coverage: every 30 min | Analytics: hourly")
+        logger.info("War coverage: every 30 min | Analytics: hourly")
+        logger.info("War coverage: every 30 min | Analytics: hourly")
         
         # Run initial tasks on startup (skip if already ran recently)
         startup_file = DATA_DIR / "last_startup.json"

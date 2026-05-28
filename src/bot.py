@@ -28,6 +28,12 @@ class TelegramBot:
         self.application.add_handler(CommandHandler("queue", self.queue_command))
         self.application.add_handler(CommandHandler("clips", self.clips_command))
         self.application.add_handler(CommandHandler("fetchclips", self.fetchclips_command))
+        self.application.add_handler(CommandHandler("analytics", self.analytics_command))
+        self.application.add_handler(CommandHandler("crosspromo", self.crosspromo_command))
+        self.application.add_handler(CommandHandler("viralpost", self.viralpost_command))
+        self.application.add_handler(CommandHandler("warcheck", self.warcheck_command))
+        self.application.add_handler(CommandHandler("directory", self.directory_command))
+        self.application.add_handler(CommandHandler("growthstats", self.growthstats_command))
         
         logger.info("Telegram bot initialized")
         
@@ -40,7 +46,13 @@ class TelegramBot:
             "/post - Manually trigger a post\n"
             "/queue - View pending posts\n"
             "/clips - YouTube clip stats\n"
-            "/fetchclips - Manually fetch clips"
+            "/fetchclips - Manually fetch clips\n"
+            "/analytics - Channel analytics\n"
+            "/crosspromo - Cross-promotion status\n"
+            "/viralpost - Viral post template\n"
+            "/warcheck - Check war news\n"
+            "/directory - Directory submission guide\n"
+            "/growthstats - Full growth metrics"
         )
         
     async def status_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -127,6 +139,94 @@ class TelegramBot:
             await update.message.reply_text("✅ Clip fetch complete")
         except Exception as e:
             await update.message.reply_text(f"❌ Error: {str(e)[:200]}")
+    
+    async def analytics_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /analytics command - show growth stats."""
+        from analytics_tracker import analytics_tracker
+        
+        summary = analytics_tracker.get_analytics_summary()
+        await update.message.reply_text(summary, parse_mode="HTML")
+        
+    async def crosspromo_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /crosspromo command - show cross-promo status."""
+        from cross_promo import cross_promo
+        
+        report = cross_promo.get_outreach_report()
+        await update.message.reply_text(report, parse_mode="HTML")
+        
+    async def viralpost_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /viralpost command - generate viral post template."""
+        from growth_engine import growth_engine
+        
+        cta = growth_engine.generate_viral_cta('article')
+        teaser = growth_engine.generate_exclusive_teaser({'ai_analysis': {'relevance': 0.9}})
+        
+        text = f"""🎯 <b>Viral Post Template</b>
+
+<b>CTA Example:</b>{cta}
+
+<b>Exclusive Teaser:</b>{teaser}
+
+<b>Growth Stats:</b>
+• Forward CTAs used: {growth_engine.state['forward_ctas_used']}
+• Engagement polls sent: {growth_engine.state['engagement_polls_sent']}
+• Exclusive teasers sent: {growth_engine.state['exclusive_teasers_sent']}
+
+Use these in your next post!"""
+        
+        await update.message.reply_text(text, parse_mode="HTML")
+        
+    async def warcheck_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /warcheck command - manual war news check."""
+        await update.message.reply_text("🌍 Checking war coverage...")
+        
+        from news_war_coverage import war_monitor
+        
+        try:
+            await war_monitor.run_war_check()
+            await update.message.reply_text("✅ War check complete")
+        except Exception as e:
+            await update.message.reply_text(f"❌ Error: {str(e)[:200]}")
+            
+    async def directory_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /directory command - show directory submission guide."""
+        from directory_submitter import directory_submitter
+        
+        guide = directory_submitter.get_submission_guide()
+        await update.message.reply_text(guide, parse_mode="HTML")
+        
+    async def growthstats_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /growthstats command - show all growth metrics."""
+        from growth_engine import growth_engine
+        from analytics_tracker import analytics_tracker
+        from cross_promo import cross_promo
+        
+        stats = growth_engine.get_growth_stats()
+        report = analytics_tracker.get_growth_report()
+        
+        text = f"""🚀 <b>Growth Engine Stats</b>
+
+<b>Viral Mechanics:</b>
+• Forward CTAs: {stats['forward_ctas_used']}
+• Engagement polls: {stats['engagement_polls_sent']}
+• Exclusive teasers: {stats['exclusive_teasers_sent']}
+
+<b>Subscribers:</b>
+• Current: {report['current_subscribers']:,}
+• Weekly growth: +{report['weekly_growth']:,}
+• Monthly growth: +{report['monthly_growth']:,}
+
+<b>Engagement:</b>
+• Avg rate: {report['avg_engagement_rate']:.1f}%
+• Best format: {report['best_post_type'] or 'N/A'}
+• Posts tracked: {report['total_posts_tracked']}
+
+<b>Milestones:</b>
+• Reached: {', '.join(str(m) for m in stats['subscriber_milestones']) or 'None yet'}
+
+Keep pushing! 📈"""
+        
+        await update.message.reply_text(text, parse_mode="HTML")
         
     async def send_message(self, text: str, parse_mode: str = "HTML"):
         """Send a message to the channel."""

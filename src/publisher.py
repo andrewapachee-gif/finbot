@@ -65,6 +65,10 @@ class Publisher:
             ticker_tags = ' '.join([f"#{t}" for t in tickers])
             tickers_str = f"\n📊 {ticker_tags}"
             
+        # Add viral CTA for growth
+        from growth_engine import growth_engine
+        cta = growth_engine.generate_viral_cta('breaking' if breaking else 'article')
+        
         text = f"""{breaking_tag}<b>{article['title']}</b>
 
 {rewrite[:400]}
@@ -72,7 +76,7 @@ class Publisher:
 {sentiment_emoji} Sentiment: <i>{sentiment.title()}</i>{tickers_str}
 
 🔗 <a href="{article['link']}">Read full article</a>
-📰 {article['source']}"""
+📰 {article['source']}{cta}"""
         
         return text
         
@@ -101,6 +105,15 @@ class Publisher:
             # Add reaction buttons if enabled
             if ENABLE_POLLS and article.get('ai_analysis', {}).get('tickers'):
                 await self._add_engagement_poll(article)
+                
+            # Record analytics
+            from analytics_tracker import analytics_tracker
+            analytics_tracker.record_post_performance(
+                post_type='article',
+                views=0,  # Will be updated later if possible
+                forwards=0,
+                time_posted=datetime.utcnow().strftime('%H:%M')
+            )
                 
         return success
         
@@ -194,9 +207,11 @@ class Publisher:
             logger.info(f"Skipping duplicate clip: {clip['title'][:50]}")
             return False
             
-        # Format caption
+        # Format caption with viral CTA
+        from growth_engine import growth_engine
         sentiment_emoji = "🎬"
         channel = clip.get('channel_title', 'Unknown')
+        cta = growth_engine.generate_viral_cta('clip')
         
         caption = f"""{sentiment_emoji} <b>{clip['title']}</b>
 
@@ -206,7 +221,7 @@ class Publisher:
 
 🔗 <a href="{clip['url']}">Watch on YouTube</a>
 
-#YouTubeClip #Finance #Investing"""
+#YouTubeClip #Finance #Investing{cta}"""
         
         # Try video upload first, fallback to thumbnail+link
         if video_path and os.path.exists(video_path):
@@ -222,6 +237,16 @@ class Publisher:
             self.mark_posted(clip['video_id'])
             self.posted_today += 1
             youtube_fetcher.mark_posted(clip['video_id'], clip['channel_id'])
+            
+            # Record analytics
+            from analytics_tracker import analytics_tracker
+            analytics_tracker.record_post_performance(
+                post_type='clip',
+                views=0,
+                forwards=0,
+                time_posted=datetime.utcnow().strftime('%H:%M')
+            )
+            
             logger.info(f"Posted clip: {clip['title'][:50]}...")
             return True
         return False

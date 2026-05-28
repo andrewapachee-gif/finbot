@@ -71451,3 +71451,15 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444f750>
 2026-05-28 01:32:23,826 | WARNING | finbot | AI client not available, skipping analysis
 2026-05-28 01:32:23,826 | WARNING | finbot | AI client not available, skipping analysis
 2026-05-28 01:32:23,826 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 06:01:00,006 | INFO | finbot | Fetching YouTube clips...
+2026-05-28 06:01:06,593 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-28 06:01:06,612 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-28 06:01:08,056 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-28 06:01:08,086 | INFO | finbot | Posted clip: Beginner Trading Plan With $100 | Risk Management ...
+2026-05-28 06:01:13,122 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-28 06:01:14,476 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-28 06:01:14,487 | INFO | finbot | Posted clip: Best ETFs for Beginners in India | Gold, Silver, N...
+2026-05-28 06:01:19,512 | WARNING | finbot | yt-dlp not installed, skipping download
+2026-05-28 06:01:20,749 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendPhoto "HTTP/1.1 200 OK"
+2026-05-28 06:01:20,761 | INFO | finbot | Posted clip: 🚨New Gas Station Scam Explained!...
+2026-05-28 06:01:25,790 | INFO | finbot | YouTube clip fetch complete
