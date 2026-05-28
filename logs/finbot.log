@@ -71621,3 +71621,14 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f03d96990>
 2026-05-28 16:45:24,470 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-28 16:45:24,470 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-28 16:45:24,470 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-28 16:46:58,666 | WARNING | finbot | yt-dlp not installed. Clip trimming will be disabled.
+2026-05-28 16:46:58,672 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-28 16:47:03,701 | INFO | finbot | OpenAI client initialized successfully
+2026-05-28 16:47:03,772 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-05-28 16:47:03,772 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-05-28 16:47:03,772 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-05-28 16:47:03,772 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-28 16:47:03,772 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-28 16:47:03,772 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-28 16:47:03,773 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-28 16:54:45,962 | INFO | finbot | yt-dlp version: 2026.03.17
