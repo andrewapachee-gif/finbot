@@ -71721,3 +71721,71 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f03d96990>
 2026-05-29 03:33:50,503 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-29 03:33:50,503 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-29 03:33:50,503 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 03:46:42,469 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-29 03:46:42,471 | INFO | finbot | No new clips found
+2026-05-29 03:46:42,801 | INFO | finbot | Fetching markets feeds...
+2026-05-29 03:46:51,991 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-29 03:47:07,700 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-29 03:47:16,657 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-29 03:47:33,196 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-29 03:48:04,083 | ERROR | finbot | Failed to fetch feed https://www.marketwatch.com/rss/topstories: 
+2026-05-29 03:48:18,640 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-29 03:48:27,564 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-29 03:48:27,565 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-29 03:50:27,567 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-29 03:50:27,571 | INFO | finbot | No new clips found
+2026-05-29 03:50:27,807 | INFO | finbot | Fetching markets feeds...
+2026-05-29 03:50:37,005 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-29 03:50:53,520 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-29 03:51:01,391 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-29 03:51:10,647 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-29 03:51:36,448 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-29 03:51:45,186 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-29 03:51:52,863 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-29 03:51:52,863 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-29 03:51:59,581 | ERROR | finbot | Failed to fetch feed https://techcrunch.com/category/artificial-intelligence/feed/: Cannot connect to host techcrunch.com:443 ssl:default [None]
+2026-05-29 03:52:07,882 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-29 03:54:51,004 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-05-29 03:54:51,009 | INFO | finbot | No new clips found
+2026-05-29 03:57:29,540 | INFO | finbot | Fetching markets feeds...
+2026-05-29 03:57:47,305 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-29 03:58:05,639 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-29 03:58:18,697 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-29 03:58:35,354 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-29 03:59:05,726 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-29 03:59:13,708 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-29 03:59:27,165 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-29 03:59:27,168 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-29 04:01:36,234 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 04:01:36,246 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-29 04:01:40,732 | INFO | finbot | OpenAI client initialized successfully
+2026-05-29 04:01:40,740 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-05-29 04:01:40,741 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-05-29 04:01:40,741 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-05-29 04:01:40,741 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:01:40,741 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:01:40,741 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:01:40,741 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:10:29,879 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 04:13:43,644 | INFO | finbot | yt-dlp version: 2026.03.17
