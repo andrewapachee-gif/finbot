@@ -71982,3 +71982,35 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444fb10>
 2026-05-29 10:01:31,713 | INFO | finbot | Clip already downloaded: /root/.openclaw/workspace/finbot/data/clips/Shf6bcaMJCY_FD வட அதக Returns தரம Secret Investment financetam.mp4
 2026-05-29 10:01:31,741 | ERROR | finbot | Failed to send video: name 'bot' is not defined
 2026-05-29 10:01:36,777 | INFO | finbot | YouTube clip fetch complete
+2026-05-29 18:22:01,843 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 18:22:01,851 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-29 18:22:06,428 | INFO | finbot | OpenAI client initialized successfully
+2026-05-29 18:22:06,471 | INFO | finbot | Fetching european_markets feeds...
+2026-05-29 18:22:07,776 | WARNING | finbot | Feed returned status 404: https://www.euronews.com/business/rss
+2026-05-29 18:22:09,649 | INFO | finbot | Fetched 10 from Financial Times Europe
+2026-05-29 18:22:14,747 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best&region=europe
+2026-05-29 18:22:17,022 | WARNING | finbot | Feed returned status 404: https://feeds.bloomberg.com/business/europe.rss
+2026-05-29 18:22:19,535 | INFO | finbot | Fetched 10 from ECB News
+2026-05-29 18:22:21,261 | INFO | finbot | Fetched 10 from EU Business
+2026-05-29 18:22:24,846 | INFO | finbot | Fetched 10 from City AM
+2026-05-29 18:22:28,456 | WARNING | finbot | Feed returned status 404: https://www.bnnbloomberg.ca/europe.rss
+2026-05-29 18:22:28,460 | INFO | finbot | Total articles fetched: 40
+2026-05-29 18:22:28,478 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-05-29 18:22:28,479 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-05-29 18:22:28,479 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-05-29 18:22:28,480 | INFO | finbot | European updates: 07:00, 11:00, 15:30, 16:30 UTC
+2026-05-29 18:22:28,481 | INFO | finbot | European breaking: every 30 min
+2026-05-29 18:22:28,481 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 18:22:28,482 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 18:22:28,482 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 18:22:28,482 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 18:22:30,509 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-29 18:22:30,895 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/close "HTTP/1.1 200 OK"
+2026-05-29 18:28:56,807 | INFO | finbot | Fetching macro feeds...
+2026-05-29 18:28:59,428 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-29 18:29:02,649 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-29 18:29:04,514 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-29 18:29:05,741 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-29 18:29:05,741 | INFO | finbot | Total articles fetched: 20
+2026-05-29 18:32:51,226 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-29 18:32:51,739 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/close "HTTP/1.1 429 Too Many Requests"
