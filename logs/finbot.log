@@ -71825,3 +71825,77 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f03d96990>
 2026-05-29 05:07:28,684 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-29 05:07:28,684 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-29 05:07:28,684 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 05:28:53,011 | INFO | finbot | Fetching european_markets feeds...
+2026-05-29 05:28:54,850 | WARNING | finbot | Feed returned status 404: https://www.euronews.com/business/rss
+2026-05-29 05:28:56,283 | INFO | finbot | Fetched 10 from Financial Times Europe
+2026-05-29 05:28:58,417 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best&region=europe
+2026-05-29 05:29:00,503 | WARNING | finbot | Feed returned status 404: https://feeds.bloomberg.com/business/europe.rss
+2026-05-29 05:29:02,800 | INFO | finbot | Fetched 10 from ECB News
+2026-05-29 05:29:04,199 | INFO | finbot | Fetched 10 from EU Business
+2026-05-29 05:29:06,626 | INFO | finbot | Fetched 10 from City AM
+2026-05-29 05:29:09,360 | WARNING | finbot | Feed returned status 404: https://www.bnnbloomberg.ca/europe.rss
+2026-05-29 05:29:09,365 | INFO | finbot | Total articles fetched: 40
+2026-05-29 05:29:09,391 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-29 05:29:13,949 | INFO | finbot | OpenAI client initialized successfully
+2026-05-29 05:29:19,321 | INFO | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-29 05:29:19,325 | INFO | openai._base_client | Retrying request to /chat/completions in 0.451284 seconds
+2026-05-29 05:29:21,513 | INFO | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-29 05:29:21,516 | INFO | openai._base_client | Retrying request to /chat/completions in 0.879075 seconds
+2026-05-29 05:29:24,261 | INFO | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-29 05:29:24,273 | ERROR | finbot | AI analysis failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2026-05-29 05:31:38,132 | INFO | finbot | Fetching european_markets feeds...
+2026-05-29 05:31:39,214 | WARNING | finbot | Feed returned status 404: https://www.euronews.com/business/rss
+2026-05-29 05:31:41,402 | INFO | finbot | Fetched 10 from Financial Times Europe
+2026-05-29 05:31:44,417 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best&region=europe
+2026-05-29 05:31:45,697 | WARNING | finbot | Feed returned status 404: https://feeds.bloomberg.com/business/europe.rss
+2026-05-29 05:31:47,180 | INFO | finbot | Fetched 10 from ECB News
+2026-05-29 05:31:49,640 | INFO | finbot | Fetched 10 from EU Business
+2026-05-29 05:31:52,245 | INFO | finbot | Fetched 10 from City AM
+2026-05-29 05:31:55,760 | WARNING | finbot | Feed returned status 404: https://www.bnnbloomberg.ca/europe.rss
+2026-05-29 05:31:55,764 | INFO | finbot | Total articles fetched: 40
+2026-05-29 05:31:58,780 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 05:31:58,791 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-29 05:32:04,730 | INFO | finbot | OpenAI client initialized successfully
+2026-05-29 05:32:04,744 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-05-29 05:32:04,744 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-05-29 05:32:04,744 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-05-29 05:32:04,744 | INFO | finbot | European updates: 07:00, 11:00, 15:30, 16:30 UTC
+2026-05-29 05:32:04,744 | INFO | finbot | European breaking: every 30 min
+2026-05-29 05:32:04,744 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 05:32:04,745 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 05:32:04,745 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 05:32:04,745 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 06:00:07,391 | INFO | finbot | Fetching YouTube clips...
+2026-05-29 06:00:17,468 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-29 06:00:20,005 | INFO | finbot | Downloading clip: 0DMHCmEIGWE
+2026-05-29 06:00:31,319 | INFO | finbot | Downloaded: /root/.openclaw/workspace/finbot/data/clips/0DMHCmEIGWE_Buy or Sell Test your Trading Skills.mp4 (3.4 MB)
+2026-05-29 06:00:31,356 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-29 06:00:38,063 | INFO | finbot | Downloading clip: Shf6bcaMJCY
+2026-05-29 06:01:02,762 | INFO | finbot | Downloaded: /root/.openclaw/workspace/finbot/data/clips/Shf6bcaMJCY_FD வட அதக Returns தரம Secret Investment financetam.mp4 (4.4 MB)
+2026-05-29 06:01:02,786 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-29 06:01:10,732 | INFO | finbot | Downloading clip: zogZEdnrc24
+2026-05-29 06:01:36,455 | INFO | finbot | Downloaded: /root/.openclaw/workspace/finbot/data/clips/zogZEdnrc24_BITCOIN CASSE LES 75000 VOICI POURQUOI C39EST DANG.mp4 (4.2 MB)
+2026-05-29 06:01:36,485 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-29 06:01:41,504 | INFO | finbot | YouTube clip fetch complete
+2026-05-29 06:08:09,223 | INFO | finbot | Fetching european_markets feeds...
+2026-05-29 06:08:10,842 | WARNING | finbot | Feed returned status 404: https://www.euronews.com/business/rss
+2026-05-29 06:08:12,612 | INFO | finbot | Fetched 10 from Financial Times Europe
+2026-05-29 06:08:19,452 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best&region=europe
+2026-05-29 06:08:22,061 | WARNING | finbot | Feed returned status 404: https://feeds.bloomberg.com/business/europe.rss
+2026-05-29 06:08:24,983 | INFO | finbot | Fetched 10 from ECB News
+2026-05-29 06:08:28,117 | INFO | finbot | Fetched 10 from EU Business
+2026-05-29 06:08:35,746 | INFO | finbot | Fetched 10 from City AM
+2026-05-29 06:08:38,277 | WARNING | finbot | Feed returned status 404: https://www.bnnbloomberg.ca/europe.rss
+2026-05-29 06:08:38,282 | INFO | finbot | Total articles fetched: 40
+2026-05-29 06:08:42,642 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 06:08:42,669 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-29 06:08:48,443 | INFO | finbot | OpenAI client initialized successfully
+2026-05-29 06:08:48,459 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-05-29 06:08:48,459 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-05-29 06:08:48,460 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-05-29 06:08:48,460 | INFO | finbot | European updates: 07:00, 11:00, 15:30, 16:30 UTC
+2026-05-29 06:08:48,460 | INFO | finbot | European breaking: every 30 min
+2026-05-29 06:08:48,460 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 06:08:48,460 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 06:08:48,460 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 06:08:48,460 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
