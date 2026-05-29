@@ -82,6 +82,16 @@ DEFAULT_FEEDS = {
         {"name": "Investing.com", "url": "https://www.investing.com/rss/news.rss", "tier": 2},
         {"name": "Seeking Alpha", "url": "https://seekingalpha.com/feed.xml", "tier": 2},
     ],
+    "european_markets": [
+        {"name": "Euronews Business", "url": "https://www.euronews.com/business/rss", "tier": 1},
+        {"name": "Financial Times Europe", "url": "https://www.ft.com/europe?format=rss", "tier": 1},
+        {"name": "Reuters European Markets", "url": "https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best&region=europe", "tier": 1},
+        {"name": "Bloomberg Europe", "url": "https://feeds.bloomberg.com/business/europe.rss", "tier": 1},
+        {"name": "ECB News", "url": "https://www.ecb.europa.eu/rss/press.html", "tier": 1},
+        {"name": "EU Business", "url": "https://www.eubusiness.com/rss", "tier": 2},
+        {"name": "City AM", "url": "https://www.cityam.com/feed/", "tier": 2},
+        {"name": "BNN Bloomberg Europe", "url": "https://www.bnnbloomberg.ca/europe.rss", "tier": 2},
+    ],
     "ai_tech": [
         {"name": "TechCrunch AI", "url": "https://techcrunch.com/category/artificial-intelligence/feed/", "tier": 1},
         {"name": "The Verge AI", "url": "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml", "tier": 1},

@@ -71789,3 +71789,27 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f03d96990>
 2026-05-29 04:01:40,741 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-29 04:10:29,879 | INFO | finbot | yt-dlp version: 2026.03.17
 2026-05-29 04:13:43,644 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 04:37:35,485 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 04:37:35,498 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-29 04:37:40,113 | INFO | finbot | OpenAI client initialized successfully
+2026-05-29 04:37:40,120 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-05-29 04:37:40,121 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-05-29 04:37:40,121 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-05-29 04:37:40,121 | INFO | finbot | European updates: 07:00, 11:00, 15:30, 16:30 UTC
+2026-05-29 04:37:40,121 | INFO | finbot | European breaking: every 30 min
+2026-05-29 04:37:40,121 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:37:40,121 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:37:40,121 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:37:40,121 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:41:07,185 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 04:41:07,196 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-29 04:41:11,468 | INFO | finbot | OpenAI client initialized successfully
+2026-05-29 04:41:11,474 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-05-29 04:41:11,474 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-05-29 04:41:11,474 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-05-29 04:41:11,474 | INFO | finbot | European updates: 07:00, 11:00, 15:30, 16:30 UTC
+2026-05-29 04:41:11,474 | INFO | finbot | European breaking: every 30 min
+2026-05-29 04:41:11,474 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:41:11,474 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:41:11,474 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 04:41:11,474 | INFO | finbot | War coverage: every 30 min | Analytics: hourly

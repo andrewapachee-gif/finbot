@@ -177,6 +177,87 @@ class Scheduler:
 
         await fetcher.close()
 
+    async def run_european_market_update(self):
+        """Post European market update."""
+        from publisher import publisher
+        from rss_fetcher import fetcher
+        from ai_filter import ai_filter
+        
+        logger.info("Running European market update...")
+        try:
+            await fetcher.initialize()
+            articles = await fetcher.fetch_all_feeds(category='european_markets')
+            await fetcher.close()
+            
+            if not articles:
+                logger.info("No European market articles found")
+                return
+                
+            # Filter for breaking/high-relevance European news
+            breaking = [a for a in articles if a.get('ai_analysis', {}).get('breaking', False)]
+            if not breaking:
+                breaking = articles[:2]  # Top 2 if no breaking
+                
+            for article in breaking[:2]:
+                article['ai_analysis'] = await ai_filter.analyze_article(article)
+                if article['ai_analysis'].get('relevance', 0) >= MIN_ARTICLE_RELEVANCE:
+                    formatted = publisher.format_article(article)
+                    await publisher.send_message(formatted)
+                    logger.info(f"Posted European market update: {article['title'][:50]}...")
+                    
+        except Exception as e:
+            logger.error(f"European market update failed: {e}")
+
+    async def run_european_market_close(self):
+        """Post European market close summary."""
+        from publisher import publisher
+        from rss_fetcher import fetcher
+        
+        logger.info("Running European market close summary...")
+        try:
+            await fetcher.initialize()
+            articles = await fetcher.fetch_all_feeds(category='european_markets')
+            await fetcher.close()
+            
+            if articles:
+                # Format close summary
+                text = f"""🇪🇺 <b>European Markets Close</b>
+
+📊 <b>Key Headlines:</b>
+"""
+                for article in articles[:3]:
+                    text += f"• {article['title']}\n"
+                
+                text += f"\n<i>Markets closed. US markets opening soon.</i>"
+                await publisher.send_message(text)
+                logger.info("Posted European market close summary")
+                
+        except Exception as e:
+            logger.error(f"European market close failed: {e}")
+
+    async def run_european_breaking_check(self):
+        """Check for breaking European financial news."""
+        from publisher import publisher
+        from rss_fetcher import fetcher
+        from ai_filter import ai_filter
+        
+        logger.info("Checking European breaking news...")
+        try:
+            await fetcher.initialize()
+            articles = await fetcher.fetch_all_feeds(category='european_markets')
+            await fetcher.close()
+            
+            for article in articles:
+                article['ai_analysis'] = await ai_filter.analyze_article(article)
+                if article['ai_analysis'].get('breaking', False):
+                    formatted = publisher.format_article(article)
+                    await publisher.send_message(formatted)
+                    logger.info(f"Posted European breaking news: {article['title'][:50]}...")
+                    break  # Only post top breaking
+                    
+        except Exception as e:
+            logger.error(f"European breaking check failed: {e}")
+
     async def run_analytics_update(self):
         """Update analytics data."""
         from analytics_tracker import analytics_tracker
@@ -241,9 +322,32 @@ class Scheduler:
             lambda: asyncio.create_task(self.run_youtube_clips())
         )
 
-        # Breaking news check (every 4 hours for faster response)
-        schedule.every(4).hours.do(
+        # European market hours (CET/CEST)
+        # 08:00 CET (07:00 UTC) - Pre-market
+        schedule.every().day.at("07:00").do(
+            lambda: asyncio.create_task(self.run_european_market_update())
+        )
+        # 12:00 CET (11:00 UTC) - Mid-day
+        schedule.every().day.at("11:00").do(
+            lambda: asyncio.create_task(self.run_european_market_update())
+        )
+        # 16:30 CET (15:30 UTC) - Euronext close
+        schedule.every().day.at("15:30").do(
+            lambda: asyncio.create_task(self.run_european_market_close())
+        )
+        # 17:30 CET (16:30 UTC) - LSE close
+        schedule.every().day.at("16:30").do(
+            lambda: asyncio.create_task(self.run_european_market_close())
+        )
+
+        # Breaking news check (every 2 hours for faster European coverage)
+        schedule.every(2).hours.do(
             lambda: asyncio.create_task(self.run_breaking_news_check())
+        )
+
+        # European breaking news (every 30 min during market hours 08:00-17:30 CET)
+        schedule.every(30).minutes.do(
+            lambda: asyncio.create_task(self.run_european_breaking_check())
         )
 
         # War coverage check (every 30 minutes for real-time geopolitical news)
@@ -311,6 +415,8 @@ class Scheduler:
         logger.info("Schedule setup complete (US Eastern Time)")
         logger.info("Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00")
         logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
+        logger.info("European updates: 07:00, 11:00, 15:30, 16:30 UTC")
+        logger.info("European breaking: every 30 min")
         logger.info("War coverage: every 30 min | Analytics: hourly")
         logger.info("War coverage: every 30 min | Analytics: hourly")
         logger.info("War coverage: every 30 min | Analytics: hourly")
@@ -322,9 +428,11 @@ class Scheduler:
         self.setup_schedule()
 
         logger.info("Scheduler started")
-        logger.info("Schedule: US Eastern Time (ET)")
+        logger.info("Schedule: US Eastern Time (ET) + European Market Coverage")
         logger.info("Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00")
         logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
+        logger.info("European updates: 07:00, 11:00, 15:30, 16:30 UTC")
+        logger.info("European breaking: every 30 min during market hours")
         logger.info("War coverage: every 30 min | Analytics: hourly")
         logger.info("War coverage: every 30 min | Analytics: hourly")
         logger.info("War coverage: every 30 min | Analytics: hourly")
