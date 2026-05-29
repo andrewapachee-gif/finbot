@@ -255,16 +255,21 @@ class Publisher:
         """Send a video file to the channel."""
         try:
             from telegram import InputFile
+            from bot import bot as bot_instance
+            
+            # Initialize bot if not already
+            if not bot_instance.bot:
+                await bot_instance.initialize()
             
             with open(video_path, 'rb') as f:
-                await bot.bot.send_video(
-                    chat_id=bot.channel_id,
+                await bot_instance.bot.send_video(
+                    chat_id=bot_instance.channel_id,
                     video=InputFile(f),
                     caption=caption,
                     parse_mode=parse_mode,
                     supports_streaming=True
                 )
-            logger.info(f"Video sent to {bot.channel_id}")
+            logger.info(f"Video sent to {bot_instance.channel_id}")
             return True
         except Exception as e:
             logger.error(f"Failed to send video: {e}")

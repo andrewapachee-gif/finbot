@@ -71899,3 +71899,86 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f03d96990>
 2026-05-29 06:08:48,460 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-29 06:08:48,460 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-29 06:08:48,460 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 06:54:46,030 | INFO | finbot | Fetching european_markets feeds...
+2026-05-29 06:54:48,702 | WARNING | finbot | Feed returned status 404: https://www.euronews.com/business/rss
+2026-05-29 06:54:50,236 | INFO | finbot | Fetched 10 from Financial Times Europe
+2026-05-29 06:54:53,016 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best&region=europe
+2026-05-29 06:54:57,243 | WARNING | finbot | Feed returned status 404: https://feeds.bloomberg.com/business/europe.rss
+2026-05-29 06:54:59,061 | INFO | finbot | Fetched 10 from ECB News
+2026-05-29 06:55:02,464 | INFO | finbot | Fetched 10 from EU Business
+2026-05-29 06:55:12,496 | INFO | finbot | Fetched 10 from City AM
+2026-05-29 06:55:14,376 | WARNING | finbot | Feed returned status 404: https://www.bnnbloomberg.ca/europe.rss
+2026-05-29 06:55:14,379 | INFO | finbot | Total articles fetched: 40
+2026-05-29 06:55:16,676 | INFO | finbot | Telegram bot initialized
+2026-05-29 06:55:18,469 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-29 06:55:18,481 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-29 06:58:45,514 | INFO | finbot | Fetching european_markets feeds...
+2026-05-29 06:58:46,885 | WARNING | finbot | Feed returned status 404: https://www.euronews.com/business/rss
+2026-05-29 06:58:48,590 | INFO | finbot | Fetched 10 from Financial Times Europe
+2026-05-29 06:58:56,524 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best&region=europe
+2026-05-29 06:59:01,168 | WARNING | finbot | Feed returned status 404: https://feeds.bloomberg.com/business/europe.rss
+2026-05-29 06:59:08,011 | INFO | finbot | Fetched 10 from ECB News
+2026-05-29 06:59:12,557 | INFO | finbot | Fetched 10 from EU Business
+2026-05-29 06:59:15,686 | INFO | finbot | Fetched 10 from City AM
+2026-05-29 06:59:20,572 | WARNING | finbot | Feed returned status 404: https://www.bnnbloomberg.ca/europe.rss
+2026-05-29 06:59:20,577 | INFO | finbot | Total articles fetched: 40
+2026-05-29 06:59:26,684 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-29 06:59:27,387 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/close "HTTP/1.1 200 OK"
+2026-05-29 07:31:07,792 | INFO | finbot | Checking for breaking news...
+2026-05-29 07:31:07,810 | INFO | finbot | Fetching markets feeds...
+2026-05-29 07:31:14,978 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-29 07:31:20,539 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-29 07:31:23,116 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-29 07:31:31,693 | INFO | finbot | Fetched 9 from Financial Times
+2026-05-29 07:31:39,081 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-29 07:31:40,903 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-29 07:31:47,810 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-29 07:31:47,810 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-29 07:31:49,469 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-29 07:31:53,418 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-29 07:31:56,413 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-29 07:32:05,999 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-29 07:32:12,552 | INFO | finbot | Fetched 10 from AI News
+2026-05-29 07:32:15,575 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-29 07:32:15,575 | INFO | finbot | Fetching crypto feeds...
+2026-05-29 07:32:18,571 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-29 07:32:21,437 | INFO | finbot | Fetched 10 from The Block
+2026-05-29 07:32:23,182 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-29 07:32:29,494 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-29 07:32:40,746 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-29 07:32:40,746 | INFO | finbot | Fetching macro feeds...
+2026-05-29 07:32:47,686 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-29 07:32:49,963 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-29 07:32:53,518 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-29 07:32:59,815 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-29 07:32:59,816 | INFO | finbot | Total articles fetched: 176
+2026-05-29 07:32:59,817 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 07:32:59,817 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 07:32:59,817 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 07:32:59,817 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 07:32:59,817 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 09:00:08,184 | INFO | finbot | Running daily digest...
+2026-05-29 09:00:08,210 | INFO | finbot | Fetching markets feeds...
+2026-05-29 09:00:08,220 | INFO | finbot | Running market summary...
+2026-05-29 09:00:09,742 | WARNING | finbot | Failed to fetch S&P 500: 'No time zone found with key America/New_York'
+2026-05-29 09:00:10,049 | WARNING | finbot | Failed to fetch Nasdaq: 'No time zone found with key America/New_York'
+2026-05-29 09:00:10,344 | WARNING | finbot | Failed to fetch Dow Jones: 'No time zone found with key America/New_York'
+2026-05-29 09:00:13,052 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f03d96990>
+2026-05-29 09:00:13,056 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7edff64a70>, 317409.982526917)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f0444fb10>
+2026-05-29 09:00:13,111 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-29 09:00:14,749 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-05-29 09:00:14,759 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-05-29 09:00:14,760 | INFO | finbot | Market summary posted
+2026-05-29 10:00:08,488 | INFO | finbot | Fetching YouTube clips...
+2026-05-29 10:00:23,062 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-29 10:00:27,126 | INFO | finbot | Clip already downloaded: /root/.openclaw/workspace/finbot/data/clips/0DMHCmEIGWE_Buy or Sell Test your Trading Skills.mp4
+2026-05-29 10:00:27,165 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-29 10:00:36,606 | INFO | finbot | Downloading clip: NigTtPeDuhQ
+2026-05-29 10:01:22,968 | INFO | finbot | Downloaded: /root/.openclaw/workspace/finbot/data/clips/NigTtPeDuhQ_Volume Trading Trick Will BLOW Your Mind.mp4 (3.7 MB)
+2026-05-29 10:01:22,998 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-29 10:01:31,713 | INFO | finbot | Clip already downloaded: /root/.openclaw/workspace/finbot/data/clips/Shf6bcaMJCY_FD வட அதக Returns தரம Secret Investment financetam.mp4
+2026-05-29 10:01:31,741 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-29 10:01:36,777 | INFO | finbot | YouTube clip fetch complete
