@@ -71632,3 +71632,92 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f03d96990>
 2026-05-28 16:47:03,772 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-28 16:47:03,773 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-05-28 16:54:45,962 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-28 18:00:03,510 | INFO | finbot | Fetching YouTube clips...
+2026-05-28 18:00:23,108 | INFO | finbot | Selected 3 clips from 3 unique channels
+2026-05-28 18:00:26,064 | INFO | finbot | Downloading clip: 6prGDYXnuiM
+2026-05-28 18:00:55,262 | INFO | finbot | Downloaded: /root/.openclaw/workspace/finbot/data/clips/6prGDYXnuiM_How to Identify a Sideways Market  Support amp Res.mp4 (4.7 MB)
+2026-05-28 18:00:55,280 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-28 18:01:03,614 | INFO | finbot | Downloading clip: 7RzBVlK45Gc
+2026-05-28 18:01:55,283 | INFO | finbot | Downloaded: /root/.openclaw/workspace/finbot/data/clips/7RzBVlK45Gc_Candlesticks Explained For Beginners Sam Trading.mp4 (3.5 MB)
+2026-05-28 18:01:55,317 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-28 18:02:03,044 | INFO | finbot | Downloading clip: ZBNOZjIl7G4
+2026-05-28 18:02:27,912 | INFO | finbot | Downloaded: /root/.openclaw/workspace/finbot/data/clips/ZBNOZjIl7G4_How Retail Traders Get Trapped Market Liquidity Ex.mp4 (2.1 MB)
+2026-05-28 18:02:27,942 | ERROR | finbot | Failed to send video: name 'bot' is not defined
+2026-05-28 18:02:32,968 | INFO | finbot | YouTube clip fetch complete
+2026-05-28 19:31:04,109 | INFO | finbot | Checking for breaking news...
+2026-05-28 19:31:04,143 | INFO | finbot | Fetching markets feeds...
+2026-05-28 19:31:22,703 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-28 19:31:45,894 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-28 19:31:55,696 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-28 19:32:11,651 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-28 19:32:38,125 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-28 19:33:09,081 | ERROR | finbot | Failed to fetch feed https://www.investing.com/rss/news.rss: 
+2026-05-28 19:33:29,161 | ERROR | finbot | Failed to fetch feed https://seekingalpha.com/feed.xml: Cannot connect to host seekingalpha.com:443 ssl:default [Temporary failure in name resolution]
+2026-05-28 19:33:29,162 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-28 19:33:49,219 | ERROR | finbot | Failed to fetch feed https://techcrunch.com/category/artificial-intelligence/feed/: Cannot connect to host techcrunch.com:443 ssl:default [Temporary failure in name resolution]
+2026-05-28 19:34:09,283 | ERROR | finbot | Failed to fetch feed https://www.theverge.com/ai-artificial-intelligence/rss/index.xml: Cannot connect to host www.theverge.com:443 ssl:default [Temporary failure in name resolution]
+2026-05-28 19:34:29,331 | ERROR | finbot | Failed to fetch feed https://venturebeat.com/category/ai/feed/: Cannot connect to host venturebeat.com:443 ssl:default [Temporary failure in name resolution]
+2026-05-28 19:34:44,370 | ERROR | finbot | Failed to fetch feed https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml: Cannot connect to host news.mit.edu:443 ssl:default [Temporary failure in name resolution]
+2026-05-28 19:34:49,887 | INFO | finbot | Fetched 10 from AI News
+2026-05-28 19:34:51,437 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-28 19:34:51,438 | INFO | finbot | Fetching crypto feeds...
+2026-05-28 19:34:54,726 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-28 19:34:56,007 | INFO | finbot | Fetched 10 from The Block
+2026-05-28 19:35:00,597 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-28 19:35:02,051 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-28 19:35:04,236 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-28 19:35:04,237 | INFO | finbot | Fetching macro feeds...
+2026-05-28 19:35:07,940 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-28 19:35:10,428 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-28 19:35:11,795 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-28 19:35:15,921 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-28 19:35:15,921 | INFO | finbot | Total articles fetched: 130
+2026-05-28 19:35:15,922 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 19:35:15,922 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 19:35:15,922 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 19:35:15,922 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-28 19:35:15,922 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 00:00:05,572 | INFO | finbot | Daily post counter reset
+2026-05-29 01:31:06,091 | INFO | finbot | Checking for breaking news...
+2026-05-29 01:31:06,122 | INFO | finbot | Fetching markets feeds...
+2026-05-29 01:31:08,756 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-05-29 01:31:12,246 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-05-29 01:31:13,589 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-05-29 01:31:15,381 | INFO | finbot | Fetched 10 from Financial Times
+2026-05-29 01:31:21,310 | INFO | finbot | Fetched 10 from MarketWatch
+2026-05-29 01:31:23,568 | INFO | finbot | Fetched 10 from Investing.com
+2026-05-29 01:31:24,850 | INFO | finbot | Fetched 10 from Seeking Alpha
+2026-05-29 01:31:24,850 | INFO | finbot | Fetching ai_tech feeds...
+2026-05-29 01:31:26,106 | INFO | finbot | Fetched 10 from TechCrunch AI
+2026-05-29 01:31:27,336 | WARNING | finbot | Feed returned status 404: https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+2026-05-29 01:31:30,296 | INFO | finbot | Fetched 7 from VentureBeat AI
+2026-05-29 01:31:34,941 | INFO | finbot | Fetched 10 from MIT AI News
+2026-05-29 01:31:39,390 | INFO | finbot | Fetched 10 from AI News
+2026-05-29 01:31:41,789 | INFO | finbot | Fetched 10 from Machine Learning Mastery
+2026-05-29 01:31:41,790 | INFO | finbot | Fetching crypto feeds...
+2026-05-29 01:31:44,512 | INFO | finbot | Fetched 10 from CoinDesk
+2026-05-29 01:31:46,829 | INFO | finbot | Fetched 10 from The Block
+2026-05-29 01:31:48,148 | INFO | finbot | Fetched 10 from Decrypt
+2026-05-29 01:31:50,346 | INFO | finbot | Fetched 10 from Cointelegraph
+2026-05-29 01:31:52,306 | INFO | finbot | Fetched 10 from CryptoSlate
+2026-05-29 01:31:52,307 | INFO | finbot | Fetching macro feeds...
+2026-05-29 01:31:54,453 | INFO | finbot | Fetched 10 from ZeroHedge
+2026-05-29 01:31:56,728 | INFO | finbot | Fetched 0 from Real Vision
+2026-05-29 01:31:58,902 | WARNING | finbot | Feed returned status 403: https://www.macrohive.com/feed/
+2026-05-29 01:32:00,273 | INFO | finbot | Fetched 10 from Fed RSS
+2026-05-29 01:32:00,273 | INFO | finbot | Total articles fetched: 177
+2026-05-29 01:32:00,274 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 01:32:00,274 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 01:32:00,274 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 01:32:00,274 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 01:32:00,274 | WARNING | finbot | AI client not available, skipping analysis
+2026-05-29 03:33:44,824 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-05-29 03:33:44,838 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-05-29 03:33:50,455 | INFO | finbot | OpenAI client initialized successfully
+2026-05-29 03:33:50,502 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-05-29 03:33:50,503 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-05-29 03:33:50,503 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-05-29 03:33:50,503 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 03:33:50,503 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 03:33:50,503 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-05-29 03:33:50,503 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
