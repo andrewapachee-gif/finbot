@@ -360,36 +360,6 @@ class Scheduler:
             lambda: asyncio.create_task(self.run_analytics_update())
         )
 
-        # War coverage check (every 30 minutes for real-time geopolitical news)
-        schedule.every(30).minutes.do(
-            lambda: asyncio.create_task(self.run_war_coverage())
-        )
-
-        # Analytics update (hourly)
-        schedule.every().hour.do(
-            lambda: asyncio.create_task(self.run_analytics_update())
-        )
-
-        # War coverage check (every 30 minutes for real-time geopolitical news)
-        schedule.every(30).minutes.do(
-            lambda: asyncio.create_task(self.run_war_coverage())
-        )
-
-        # Analytics update (hourly)
-        schedule.every().hour.do(
-            lambda: asyncio.create_task(self.run_analytics_update())
-        )
-
-        # War coverage check (every 30 minutes for real-time geopolitical news)
-        schedule.every(30).minutes.do(
-            lambda: asyncio.create_task(self.run_war_coverage())
-        )
-
-        # Analytics update (hourly)
-        schedule.every().hour.do(
-            lambda: asyncio.create_task(self.run_analytics_update())
-        )
-
         # Weekly roundup
         if ENABLE_WEEKLY_ROUNDUP:
             day_map = {
@@ -418,9 +388,6 @@ class Scheduler:
         logger.info("European updates: 07:00, 11:00, 15:30, 16:30 UTC")
         logger.info("European breaking: every 30 min")
         logger.info("War coverage: every 30 min | Analytics: hourly")
-        logger.info("War coverage: every 30 min | Analytics: hourly")
-        logger.info("War coverage: every 30 min | Analytics: hourly")
-        logger.info("War coverage: every 30 min | Analytics: hourly")
 
     async def run(self):
         """Run the scheduler loop."""
@@ -433,9 +400,6 @@ class Scheduler:
         logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
         logger.info("European updates: 07:00, 11:00, 15:30, 16:30 UTC")
         logger.info("European breaking: every 30 min during market hours")
-        logger.info("War coverage: every 30 min | Analytics: hourly")
-        logger.info("War coverage: every 30 min | Analytics: hourly")
-        logger.info("War coverage: every 30 min | Analytics: hourly")
         logger.info("War coverage: every 30 min | Analytics: hourly")
         
         # Run initial tasks on startup (skip if already ran recently)
