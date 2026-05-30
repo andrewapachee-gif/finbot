@@ -82,7 +82,19 @@ class WarCoverageMonitor:
         for category, feeds in self.war_feeds.items():
             for feed in feeds:
                 try:
-                    parsed = feedparser.parse(feed['url'])
+                    # Use asyncio.wait_for to prevent hanging on slow feeds
+                    parsed = await asyncio.wait_for(
+                        asyncio.get_event_loop().run_in_executor(
+                            None, lambda: feedparser.parse(feed['url'])
+                        ),
+                        timeout=10.0  # 10 second timeout per feed
+                    )
+                    
+                    # Check if feed parsed successfully
+                    if not parsed or not hasattr(parsed, 'entries') or not parsed.entries:
+                        logger.warning(f"Feed parse failed or empty: {feed['name']}")
+                        continue
+                    
                     for entry in parsed.entries[:5]:  # Top 5 per feed
                         article = {
                             'id': entry.get('id', entry.get('link', '')),
@@ -102,6 +114,8 @@ class WarCoverageMonitor:
                         if article['urgency_score'] > 0.3:
                             articles.append(article)
                             
+                except asyncio.TimeoutError:
+                    logger.warning(f"Feed timeout (10s): {feed['name']}")
                 except Exception as e:
                     logger.error(f"Failed to fetch {feed['name']}: {e}")
         
