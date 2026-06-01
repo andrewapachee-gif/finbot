@@ -72107,3 +72107,14 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444fb10>
 2026-06-01 12:17:55,437 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
 2026-06-01 12:20:59,246 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
 2026-06-01 12:23:59,157 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-01 18:06:48,894 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-01 18:06:48,909 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-01 18:06:54,962 | INFO | finbot | OpenAI client initialized successfully
+2026-06-01 18:06:54,976 | INFO | finbot | Schedule setup complete (US Eastern Time)
+2026-06-01 18:06:54,976 | INFO | finbot | Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00
+2026-06-01 18:06:54,976 | INFO | finbot | Hook rotation: every 3 hours (8x daily)
+2026-06-01 18:06:54,976 | INFO | finbot | Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET
+2026-06-01 18:06:54,976 | INFO | finbot | European updates: 07:00, 11:00, 15:30, 16:30 UTC
+2026-06-01 18:06:54,976 | INFO | finbot | European breaking: every 30 min
+2026-06-01 18:06:54,976 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
+2026-06-01 18:07:26,192 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
