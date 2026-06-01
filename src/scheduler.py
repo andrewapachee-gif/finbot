@@ -28,6 +28,48 @@ class Scheduler:
         self.running = False
         self.daily_articles = []  # Store articles for daily digest
 
+    async def run_hook_rotation(self):
+        """Post one high-retention hook from the rotation."""
+        from content_hooks import HIGH_RETENTION_HOOKS, format_hook_for_telegram
+        from growth_engine import growth_engine
+        from bot import bot
+        
+        logger.info("Running hook rotation...")
+        
+        # Load rotation state
+        rotation_file = DATA_DIR / "hook_rotation.json"
+        rotation_state = {"last_index": -1, "posted_ids": []}
+        if rotation_file.exists():
+            try:
+                with open(rotation_file, 'r') as f:
+                    rotation_state = json.load(f)
+            except:
+                pass
+        
+        # Get next hook (round-robin)
+        next_index = (rotation_state.get("last_index", -1) + 1) % len(HIGH_RETENTION_HOOKS)
+        hook = HIGH_RETENTION_HOOKS[next_index]
+        
+        # Format with viral CTA
+        formatted = growth_engine.format_hook_post(hook)
+        
+        # Post to channel
+        try:
+            success = await bot.send_message(formatted)
+            if success:
+                rotation_state["last_index"] = next_index
+                rotation_state["posted_ids"].append(hook["id"])
+                with open(rotation_file, 'w') as f:
+                    json.dump(rotation_state, f, indent=2)
+                logger.info(f"Posted hook #{hook['id']}: {hook['trigger']}")
+                
+                # Track in publisher
+                publisher.posted_today += 1
+            else:
+                logger.error(f"Failed to post hook #{hook['id']}")
+        except Exception as e:
+            logger.error(f"Hook rotation failed: {e}")
+
     async def run_youtube_clips(self):
         """Fetch and post YouTube clips."""
         # Prevent concurrent execution
@@ -355,6 +397,11 @@ class Scheduler:
             lambda: asyncio.create_task(self.run_war_coverage())
         )
 
+        # Hook rotation (every 3 hours = 8 hooks/day max, stays under 10 post limit)
+        schedule.every(3).hours.do(
+            lambda: asyncio.create_task(self.run_hook_rotation())
+        )
+
         # Analytics update (hourly)
         schedule.every().hour.do(
             lambda: asyncio.create_task(self.run_analytics_update())
@@ -384,6 +431,7 @@ class Scheduler:
 
         logger.info("Schedule setup complete (US Eastern Time)")
         logger.info("Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00")
+        logger.info("Hook rotation: every 3 hours (8x daily)")
         logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
         logger.info("European updates: 07:00, 11:00, 15:30, 16:30 UTC")
         logger.info("European breaking: every 30 min")
@@ -397,6 +445,7 @@ class Scheduler:
         logger.info("Scheduler started")
         logger.info("Schedule: US Eastern Time (ET) + European Market Coverage")
         logger.info("Clip times (ET): 06:00, 10:00, 14:00, 18:00, 22:00")
+        logger.info("Hook rotation: every 3 hours (8x daily)")
         logger.info("Digest: 08:00 ET | Market summaries: 09:00, 16:00 ET")
         logger.info("European updates: 07:00, 11:00, 15:30, 16:30 UTC")
         logger.info("European breaking: every 30 min during market hours")

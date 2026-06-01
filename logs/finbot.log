@@ -72097,3 +72097,13 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444fb10>
 2026-05-30 18:57:04,098 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
 2026-05-30 18:57:14,113 | WARNING | finbot | Feed timeout (10s): Platts Oil
 2026-05-30 18:57:21,416 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-06-01 10:52:03,053 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-01 10:52:03,067 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-01 10:52:06,972 | INFO | finbot | OpenAI client initialized successfully
+2026-06-01 10:53:28,684 | INFO | finbot | Telegram bot initialized
+2026-06-01 12:13:08,495 | INFO | finbot | Telegram bot initialized
+2026-06-01 12:13:14,245 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-01 12:13:14,253 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-06-01 12:17:55,437 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-01 12:20:59,246 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-01 12:23:59,157 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
