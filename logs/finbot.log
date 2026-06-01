@@ -72014,3 +72014,86 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444fb10>
 2026-05-29 18:29:05,741 | INFO | finbot | Total articles fetched: 20
 2026-05-29 18:32:51,226 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
 2026-05-29 18:32:51,739 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/close "HTTP/1.1 429 Too Many Requests"
+2026-05-30 06:34:59,269 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 06:35:04,432 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 06:35:11,629 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 06:35:15,766 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 06:35:20,371 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 06:35:25,867 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 06:35:30,370 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 06:35:34,629 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-05-30 06:35:44,649 | WARNING | finbot | Feed timeout (10s): Tehran Times
+2026-05-30 06:35:54,265 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 06:35:59,828 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 06:36:06,411 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 06:36:08,710 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 06:36:13,819 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 06:36:19,216 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 06:36:22,583 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 06:36:28,229 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-05-30 06:36:38,247 | WARNING | finbot | Feed timeout (10s): Tehran Times
+2026-05-30 14:00:39,170 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 14:00:43,648 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 14:00:49,471 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 14:00:53,297 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 14:00:57,275 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 14:01:01,559 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 14:01:03,045 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 14:01:09,144 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-05-30 14:01:20,845 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 14:01:24,282 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 14:01:31,036 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 14:01:32,638 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 14:01:36,686 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 14:01:45,658 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 14:01:47,636 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 14:01:54,458 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-05-30 14:07:16,672 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 14:07:20,337 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 14:07:26,251 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 14:07:28,111 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 14:07:31,966 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 14:07:37,712 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 14:07:39,047 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 14:07:43,137 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-05-30 14:07:53,058 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 14:08:03,073 | WARNING | finbot | Feed timeout (10s): BBC World
+2026-05-30 14:08:04,795 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 14:08:16,440 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 14:08:20,355 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 14:08:30,078 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 14:08:35,891 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 14:08:39,141 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 14:08:51,133 | WARNING | finbot | Feed timeout (10s): Jerusalem Post
+2026-05-30 14:12:18,012 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 14:12:22,513 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 14:12:27,793 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 14:12:30,037 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 14:12:33,721 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 14:12:39,223 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 14:12:40,528 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 14:12:45,922 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-05-30 14:12:56,559 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 14:13:01,393 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 14:13:06,265 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 14:13:08,627 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 14:13:13,235 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 14:13:16,593 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 14:13:18,861 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 14:13:23,696 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-05-30 18:55:55,865 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 18:55:59,970 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 18:56:07,552 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 18:56:09,089 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 18:56:11,966 | WARNING | finbot | Feed parse failed or empty: OilPrice.com
+2026-05-30 18:56:18,396 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 18:56:19,822 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-05-30 18:56:23,738 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-05-30 18:56:38,392 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-05-30 18:56:43,615 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-05-30 18:56:47,697 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-05-30 18:56:51,030 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-05-30 18:57:01,040 | WARNING | finbot | Feed timeout (10s): OilPrice.com
+2026-05-30 18:57:04,098 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-05-30 18:57:14,113 | WARNING | finbot | Feed timeout (10s): Platts Oil
+2026-05-30 18:57:21,416 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post

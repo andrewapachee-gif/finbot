@@ -54,6 +54,11 @@ class GrowthEngine:
             'war': [
                 "\n\n🌍 <i>Geopolitical alert — forward to your network</i>",
                 "\n\n⚠️ <i>This impacts global markets. Share widely.</i>",
+            ],
+            'hook': [
+                "\n\n🔥 <i>This changes everything — forward before it goes mainstream</i>",
+                "\n\n👇 <i>Share with someone who still thinks the old rules apply</i>",
+                "\n\n⚡ <i>The algorithm hides this. Forward it manually.</i>",
             ]
         }
         
@@ -106,6 +111,21 @@ class GrowthEngine:
         self._save_state()
         return teaser
     
+    def format_hook_post(self, hook_data: dict) -> str:
+        """Format a high-retention hook for Telegram posting."""
+        from content_hooks import format_hook_for_telegram
+        
+        formatted = format_hook_for_telegram(hook_data)
+        cta = self.generate_viral_cta('hook')
+        
+        return formatted + cta
+        
+    def get_random_hook(self) -> dict:
+        """Get a random hook from the high-retention collection."""
+        from content_hooks import HIGH_RETENTION_HOOKS
+        import random
+        return random.choice(HIGH_RETENTION_HOOKS)
+        
     def format_viral_post(self, article: Dict, article_type: str = 'article') -> str:
         """Format article with viral optimization."""
         from publisher import publisher

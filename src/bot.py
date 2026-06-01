@@ -34,6 +34,8 @@ class TelegramBot:
         self.application.add_handler(CommandHandler("warcheck", self.warcheck_command))
         self.application.add_handler(CommandHandler("directory", self.directory_command))
         self.application.add_handler(CommandHandler("growthstats", self.growthstats_command))
+        self.application.add_handler(CommandHandler("hooks", self.hooks_command))
+        self.application.add_handler(CommandHandler("testhook", self.testhook_command))
         
         logger.info("Telegram bot initialized")
         
@@ -52,7 +54,9 @@ class TelegramBot:
             "/viralpost - Viral post template\n"
             "/warcheck - Check war news\n"
             "/directory - Directory submission guide\n"
-            "/growthstats - Full growth metrics"
+            "/growthstats - Full growth metrics\n"
+            "/hooks - Show 15 high-retention hooks\n"
+            "/testhook [1-15] - Preview a specific hook"
         )
         
     async def status_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -229,6 +233,39 @@ Use these in your next post!"""
 Keep pushing! 📈"""
         
         await update.message.reply_text(text, parse_mode="HTML")
+
+    async def hooks_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /hooks command - show all 15 high-retention hooks."""
+        from content_hooks import HIGH_RETENTION_HOOKS, format_hook_for_telegram
+        
+        text = "🎯 <b>15 High-Retention Hooks</b>\n\n"
+        for hook in HIGH_RETENTION_HOOKS[:5]:  # Show first 5
+            formatted = format_hook_for_telegram(hook)
+            text += f"<b>#{hook['id']}</b> ({hook['trigger']})\n{formatted[:200]}...\n\n"
+        
+        text += "📋 Use /testhook [1-15] to preview a full hook"
+        await update.message.reply_text(text, parse_mode="HTML")
+        
+    async def testhook_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /testhook command - preview a specific hook."""
+        from content_hooks import get_hook_by_id, format_hook_for_telegram
+        
+        args = context.args
+        if not args:
+            await update.message.reply_text("Usage: /testhook [1-15]")
+            return
+            
+        try:
+            hook_id = int(args[0])
+            hook = get_hook_by_id(hook_id)
+            if not hook:
+                await update.message.reply_text("Invalid hook ID. Use 1-15.")
+                return
+                
+            formatted = format_hook_for_telegram(hook)
+            await update.message.reply_text(formatted, parse_mode="HTML")
+        except ValueError:
+            await update.message.reply_text("Please provide a number between 1-15.")
         
     async def send_message(self, text: str, parse_mode: str = "HTML"):
         """Send a message to the channel."""
