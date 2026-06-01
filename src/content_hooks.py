@@ -7,7 +7,7 @@ Each hook is engineered with psychological triggers to freeze thumbs within 2 se
 HIGH_RETENTION_HOOKS = [
     {
         "id": 1,
-        "hook": "Your "safe" 60/40 portfolio just silently lost 23% to inflation last year. Here's the allocation nobody on Wall Street will show you...",
+        "hook": "Your 'safe' 60/40 portfolio just silently lost 23% to inflation last year. Here's the allocation nobody on Wall Street will show you...",
         "trigger": "negative_velocity",
         "layout": "🔥 CONTRARIAN TRUTH\n\n{hook}\n\n👇 Tap for the breakdown"
     },
@@ -25,7 +25,7 @@ HIGH_RETENTION_HOOKS = [
     },
     {
         "id": 4,
-        "hook": "The Fed's next move isn't a rate cut. It's this. And every "expert" on CNBC is getting it wrong...",
+        "hook": "The Fed's next move isn't a rate cut. It's this. And every 'expert' on CNBC is getting it wrong...",
         "trigger": "authority_challenge",
         "layout": "🏛 FED WATCH\n\n{hook}\n\n💡 The real play →"
     },
@@ -61,7 +61,7 @@ HIGH_RETENTION_HOOKS = [
     },
     {
         "id": 10,
-        "hook": "Your broker's "free" trades are costing you 2.3% annually in hidden spread arbitrage. Here's the math they buried in the fine print...",
+        "hook": "Your broker's 'free' trades are costing you 2.3% annually in hidden spread arbitrage. Here's the math they buried in the fine print...",
         "trigger": "hidden_cost_exposure",
         "layout": "💸 THE HIDDEN FEE\n\n{hook}\n\n🧮 The real cost →"
     },
@@ -73,7 +73,7 @@ HIGH_RETENTION_HOOKS = [
     },
     {
         "id": 12,
-        "hook": "I backtested every "buy the dip" strategy since 1990. Only ONE approach beat buy-and-hold. It requires doing nothing for 11 months of the year...",
+        "hook": "I backtested every 'buy the dip' strategy since 1990. Only ONE approach beat buy-and-hold. It requires doing nothing for 11 months of the year...",
         "trigger": "counter_intuitive_method",
         "layout": "🧪 BACKTEST RESULTS\n\n{hook}\n\n📋 The strategy →"
     },
