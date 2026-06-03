@@ -10,6 +10,9 @@ from config import logger, DATA_DIR
 
 # YouTube Data API v3
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY", "")
+# Also check for legacy env var name
+if not YOUTUBE_API_KEY:
+    YOUTUBE_API_KEY = os.getenv("YOUTUBE_API", "")
 YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 
@@ -338,11 +341,16 @@ class YouTubeClipFetcher:
             if i < len(categories_to_search) - 1:
                 await asyncio.sleep(3)
             
+        # If API returned no clips, fallback to yt-dlp
+        if not all_clips and not self.api_key:
+            logger.info("API key not set, using yt-dlp fallback")
+            return await self._fetch_with_ytdlp()
+        
         # Get details for all clips
         video_ids = [c['video_id'] for c in all_clips if not self.is_duplicate(c['video_id'])]
         if not video_ids:
-            logger.info("No new clips found")
-            return []
+            logger.info("No new clips found via API, trying yt-dlp fallback")
+            return await self._fetch_with_ytdlp()
             
         details = await self.get_video_details(video_ids)
         
@@ -374,6 +382,11 @@ class YouTubeClipFetcher:
             
             valid_clips.append(clip)
             
+        # If no valid clips after filtering, try yt-dlp
+        if not valid_clips:
+            logger.info("No valid clips from API, trying yt-dlp fallback")
+            return await self._fetch_with_ytdlp()
+        
         # Score and sort by relevance + channel diversity
         scored_clips = self._score_clips(valid_clips)
         
@@ -396,6 +409,98 @@ class YouTubeClipFetcher:
         logger.info(f"Selected {len(selected)} clips from {len(used_channels)} unique channels")
         logger.info(self.quota.get_status())
         return selected
+    
+    async def _fetch_with_ytdlp(self) -> List[Dict]:
+        """Fetch clips using yt-dlp as fallback when API is unavailable."""
+        import subprocess
+        
+        logger.info("Using yt-dlp fallback for YouTube clips")
+        
+        category = CLIP_CATEGORIES[0] if CLIP_CATEGORIES else "finance"
+        search_query = f"ytsearch10:{category} investing news today short"
+        
+        try:
+            # Use yt-dlp to search for recent short videos
+            cmd = [
+                "yt-dlp",
+                "--dump-json",
+                "--flat-playlist",
+                "--playlist-end", "10",
+                "--match-filter", f"duration < {MAX_CLIP_DURATION_SEC} & duration > {MIN_CLIP_DURATION_SEC}",
+                search_query
+            ]
+            
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            
+            if result.returncode != 0:
+                logger.warning(f"yt-dlp search failed: {result.stderr[:200]}")
+                return []
+            
+            clips = []
+            for line in result.stdout.strip().split("\n"):
+                if not line:
+                    continue
+                    
+                try:
+                    video = json.loads(line)
+                    video_id = video.get("id")
+                    
+                    if not video_id or self.is_duplicate(video_id):
+                        continue
+                    
+                    # Check channel diversity
+                    channel_id = video.get("channel_id", "unknown")
+                    if not self._is_channel_diverse(channel_id):
+                        continue
+                    
+                    # Filter by duration (yt-dlp returns seconds)
+                    duration = video.get("duration")
+                    if duration is None:
+                        continue
+                    duration = int(duration)
+                    if not (MIN_CLIP_DURATION_SEC <= duration <= MAX_CLIP_DURATION_SEC):
+                        continue
+                    
+                    clip = {
+                        "video_id": video_id,
+                        "title": video.get("title", "Untitled"),
+                        "description": video.get("description", "")[:200],
+                        "channel_id": channel_id,
+                        "channel_title": video.get("channel", "Unknown"),
+                        "published_at": video.get("upload_date", ""),
+                        "thumbnail": video.get("thumbnail", ""),
+                        "duration_sec": duration,
+                        "view_count": video.get("view_count", 0),
+                        "url": f"https://youtube.com/watch?v={video_id}"
+                    }
+                    
+                    clips.append(clip)
+                    self._add_channel(channel_id)
+                    
+                    if len(clips) >= MAX_CLIPS_PER_RUN:
+                        break
+                        
+                except json.JSONDecodeError:
+                    continue
+            
+            logger.info(f"yt-dlp found {len(clips)} unique clips")
+            return clips
+            
+        except subprocess.TimeoutExpired:
+            logger.warning("yt-dlp search timed out")
+            return []
+        except Exception as e:
+            logger.error(f"yt-dlp fallback error: {e}")
+            return []
+    
+    def _is_channel_diverse(self, channel_id: str) -> bool:
+        """Check if channel is not overused recently."""
+        return channel_id not in self.channel_history[-5:]
+    
+    def _add_channel(self, channel_id: str):
+        """Add channel to history."""
+        self.channel_history.append(channel_id)
+        self._save_channel_history()
         
     def _score_clips(self, clips: List[Dict]) -> List[Dict]:
         """Score clips by relevance, engagement, and recency."""

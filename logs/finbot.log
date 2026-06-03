@@ -72118,3 +72118,54 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444fb10>
 2026-06-01 18:06:54,976 | INFO | finbot | European breaking: every 30 min
 2026-06-01 18:06:54,976 | INFO | finbot | War coverage: every 30 min | Analytics: hourly
 2026-06-01 18:07:26,192 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-01 20:36:01,827 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-03 07:38:28,597 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-03 07:38:28,607 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-03 07:38:35,743 | INFO | finbot | OpenAI client initialized successfully
+2026-06-03 10:03:02,356 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-03 10:03:02,368 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-03 10:03:07,259 | INFO | finbot | OpenAI client initialized successfully
+2026-06-03 10:03:07,284 | INFO | finbot | Fetching YouTube clips...
+2026-06-03 10:03:15,893 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-06-03 10:03:15,894 | INFO | finbot | No new clips found
+2026-06-03 10:03:15,894 | INFO | finbot | No new clips found
+2026-06-03 10:26:33,654 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-06-03 10:26:33,656 | INFO | finbot | No new clips found via API, trying yt-dlp fallback
+2026-06-03 10:26:33,657 | INFO | finbot | Using yt-dlp fallback for YouTube clips
+2026-06-03 10:26:45,420 | ERROR | finbot | yt-dlp fallback error: '<=' not supported between instances of 'int' and 'NoneType'
+2026-06-03 10:30:44,992 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-06-03 10:30:44,993 | INFO | finbot | No new clips found via API, trying yt-dlp fallback
+2026-06-03 10:30:44,993 | INFO | finbot | Using yt-dlp fallback for YouTube clips
+2026-06-03 10:30:55,348 | INFO | finbot | yt-dlp found 0 unique clips
+2026-06-03 19:19:23,553 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-06-03 19:19:23,556 | INFO | finbot | No new clips found via API, trying yt-dlp fallback
+2026-06-03 19:19:23,556 | INFO | finbot | Using yt-dlp fallback for YouTube clips
+2026-06-03 19:19:33,766 | INFO | finbot | yt-dlp found 1 unique clips
