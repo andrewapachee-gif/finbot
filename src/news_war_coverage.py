@@ -13,6 +13,7 @@ class WarCoverageMonitor:
     def __init__(self):
         self.state_file = DATA_DIR / "war_coverage.json"
         self.state = self._load_state()
+        self.feeds = []  # Initialize feeds list for compatibility
         
         # War-specific RSS feeds
         self.war_feeds = {
@@ -51,11 +52,14 @@ class WarCoverageMonitor:
         
         # Market impact keywords
         self.market_keywords = [
-            'oil', 'crude', 'brent', 'wti', 'gas', 'energy',
-            'gold', 'safe haven', 'treasury', 'bond',
-            'defense', 'lockheed', 'raytheon', 'northrop',
-            'vix', 'volatility', 'futures', 'gap'
+            'oil', 'crude', 'brent', 'opec', 'energy', 'gas',
+            'gold', 'safe haven', 'treasury', 'bond', 'dollar',
+            'stock', 'market', 'futures', 'trading', 'volatility'
         ]
+        
+        # Feed cache (avoid re-fetching same feeds too often)
+        self.feed_cache = {}
+        self.cache_ttl = 300  # 5 minutes
     
     def _load_state(self) -> Dict:
         """Load war coverage state."""
@@ -64,10 +68,9 @@ class WarCoverageMonitor:
                 return json.load(f)
         return {
             'posted_stories': [],
-            'urgent_queue': [],
-            'last_check': None,
             'conflict_intensity': 'low',
-            'market_impact_level': 'low'
+            'market_impact_level': 'low',
+            'last_check': None
         }
     
     def _save_state(self):
@@ -76,52 +79,87 @@ class WarCoverageMonitor:
             json.dump(self.state, f, indent=2)
     
     async def fetch_war_news(self) -> List[Dict]:
-        """Fetch war-related news from all feeds."""
-        articles = []
+        """Fetch war news from all feeds."""
+        all_articles = []
         
         for category, feeds in self.war_feeds.items():
-            for feed in feeds:
+            for feed_info in feeds:
                 try:
-                    # Use asyncio.wait_for to prevent hanging on slow feeds
-                    parsed = await asyncio.wait_for(
-                        asyncio.get_event_loop().run_in_executor(
-                            None, lambda: feedparser.parse(feed['url'])
-                        ),
-                        timeout=10.0  # 10 second timeout per feed
-                    )
+                    # Check cache
+                    cache_key = feed_info['url']
+                    cached = self.feed_cache.get(cache_key)
+                    if cached and (datetime.utcnow() - cached['time']).seconds < self.cache_ttl:
+                        articles = cached['articles']
+                    else:
+                        # Fetch with timeout
+                        articles = await self._fetch_feed(feed_info, category)
+                        self.feed_cache[cache_key] = {
+                            'articles': articles,
+                            'time': datetime.utcnow()
+                        }
                     
-                    # Check if feed parsed successfully
-                    if not parsed or not hasattr(parsed, 'entries') or not parsed.entries:
-                        logger.warning(f"Feed parse failed or empty: {feed['name']}")
-                        continue
+                    all_articles.extend(articles)
                     
-                    for entry in parsed.entries[:5]:  # Top 5 per feed
+                except Exception as e:
+                    logger.warning(f"Feed error ({feed_info['name']}): {e}")
+                
+                # Rate limit between feeds
+                await asyncio.sleep(1)
+        
+        # Score and sort
+        scored = []
+        for article in all_articles:
+            article['urgency_score'] = self._score_urgency(article)
+            article['market_impact'] = self._score_market_impact(article)
+            scored.append(article)
+        
+        scored.sort(key=lambda x: x['urgency_score'], reverse=True)
+        return scored
+    
+    async def _fetch_feed(self, feed_info: Dict, category: str) -> List[Dict]:
+        """Fetch a single RSS feed."""
+        import aiohttp
+        
+        url = feed_info['url']
+        name = feed_info['name']
+        tier = feed_info['tier']
+        
+        try:
+            async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=10)) as session:
+                async with session.get(url, headers={'User-Agent': 'FinBot/1.0'}) as resp:
+                    if resp.status != 200:
+                        logger.warning(f"Feed returned status {resp.status}: {name}")
+                        return []
+                    
+                    text = await resp.text()
+                    feed = feedparser.parse(text)
+                    
+                    if not feed.entries:
+                        logger.warning(f"Feed parse failed or empty: {name}")
+                        return []
+                    
+                    articles = []
+                    for entry in feed.entries[:5]:  # Top 5 per feed
                         article = {
                             'id': entry.get('id', entry.get('link', '')),
                             'title': entry.get('title', ''),
                             'summary': entry.get('summary', entry.get('description', '')),
                             'link': entry.get('link', ''),
-                            'source': feed['name'],
-                            'category': category,
                             'published': entry.get('published', ''),
-                            'tier': feed['tier']
+                            'source': name,
+                            'category': category,
+                            'tier': tier
                         }
-                        
-                        # Score urgency
-                        article['urgency_score'] = self._score_urgency(article)
-                        article['market_impact'] = self._score_market_impact(article)
-                        
-                        if article['urgency_score'] > 0.3:
-                            articles.append(article)
-                            
-                except asyncio.TimeoutError:
-                    logger.warning(f"Feed timeout (10s): {feed['name']}")
-                except Exception as e:
-                    logger.error(f"Failed to fetch {feed['name']}: {e}")
-        
-        # Sort by urgency
-        articles.sort(key=lambda x: x['urgency_score'], reverse=True)
-        return articles
+                        articles.append(article)
+                    
+                    return articles
+                    
+        except asyncio.TimeoutError:
+            logger.warning(f"Feed timeout (10s): {name}")
+            return []
+        except Exception as e:
+            logger.warning(f"Feed parse failed or empty: {name}")
+            return []
     
     def _score_urgency(self, article: Dict) -> float:
         """Score article urgency (0-1)."""
@@ -133,19 +171,22 @@ class WarCoverageMonitor:
         keyword_count = sum(1 for kw in self.conflict_keywords if kw in text)
         score += min(keyword_count * 0.15, 0.6)
         
-        # Breaking indicators
-        if any(word in article['title'].lower() for word in ['breaking', 'urgent', 'just', 'live']):
+        # Tier bonus (tier 1 sources weighted higher)
+        tier = article.get('tier', 2)
+        score += (3 - tier) * 0.1
+        
+        # Breaking/Urgent in title
+        if any(word in article['title'].lower() for word in ['breaking', 'urgent', 'alert', 'live']):
             score += 0.2
         
-        # Tier bonus
-        if article['tier'] == 1:
-            score += 0.1
-        
-        # Recency (if published in last hour)
+        # Recent bonus (within last hour)
         try:
-            pub_time = datetime.strptime(article['published'], '%a, %d %b %Y %H:%M:%S %Z')
-            if (datetime.utcnow() - pub_time).total_seconds() < 3600:
-                score += 0.1
+            published = datetime.fromisoformat(article['published'].replace('Z', '+00:00'))
+            hours_old = (datetime.utcnow() - published.replace(tzinfo=None)).total_seconds() / 3600
+            if hours_old < 1:
+                score += 0.15
+            elif hours_old < 6:
+                score += 0.05
         except:
             pass
         
@@ -232,6 +273,7 @@ class WarCoverageMonitor:
     async def run_war_check(self):
         """Run war coverage check and post urgent news."""
         from publisher import publisher
+        from bot import bot
         
         logger.info("Running war coverage check...")
         
@@ -244,8 +286,23 @@ class WarCoverageMonitor:
         for article in breaking:
             formatted = self.format_war_alert(article)
             
-            # Post with high priority
-            success = await publisher.send_message(formatted)
+            # Post with high priority - try publisher first, fallback to bot
+            success = False
+            try:
+                success = await publisher.send_message(formatted)
+            except (AttributeError, TypeError) as e:
+                logger.warning(f"Publisher send failed: {e}, trying bot fallback")
+            
+            if not success:
+                try:
+                    from bot import bot
+                    if bot.bot:
+                        success = await bot.send_message(formatted)
+                    else:
+                        await bot.initialize()
+                        success = await bot.send_message(formatted)
+                except Exception as e2:
+                    logger.error(f"Bot fallback also failed: {e2}")
             
             if success:
                 self.mark_posted(article['id'])
@@ -263,6 +320,8 @@ class WarCoverageMonitor:
                     self.state['conflict_intensity'] = 'low'
                 
                 self._save_state()
+            else:
+                logger.error(f"Failed to post war alert: {article['title'][:50]}...")
             
             # Rate limit
             await asyncio.sleep(30)

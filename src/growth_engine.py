@@ -158,6 +158,10 @@ class GrowthEngine:
         source = article['source']
         link = article['link']
         
+        # Clean summary of HTML tags for Telegram
+        import re
+        summary_clean = re.sub(r'<[^>]+>', '', summary)
+        
         # Market impact analysis
         impact = self._analyze_market_impact(article)
         
@@ -165,7 +169,7 @@ class GrowthEngine:
 
 <b>{title}</b>
 
-{summary}
+{summary_clean}
 
 {impact}
 

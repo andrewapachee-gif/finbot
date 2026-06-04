@@ -72169,3 +72169,189 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444fb10>
 2026-06-03 19:19:23,556 | INFO | finbot | No new clips found via API, trying yt-dlp fallback
 2026-06-03 19:19:23,556 | INFO | finbot | Using yt-dlp fallback for YouTube clips
 2026-06-03 19:19:33,766 | INFO | finbot | yt-dlp found 1 unique clips
+2026-06-04 03:52:27,329 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-04 03:52:27,349 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-04 03:52:32,802 | INFO | finbot | OpenAI client initialized successfully
+2026-06-04 03:54:45,638 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-04 03:54:45,655 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-04 03:54:49,991 | INFO | finbot | OpenAI client initialized successfully
+2026-06-04 03:57:29,907 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-04 03:57:29,930 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-04 03:57:35,880 | INFO | finbot | OpenAI client initialized successfully
+2026-06-04 03:57:35,899 | INFO | finbot | Fetching YouTube clips...
+2026-06-04 03:57:37,896 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-06-04 03:57:37,897 | INFO | finbot | No new clips found via API, trying yt-dlp fallback
+2026-06-04 03:57:37,898 | INFO | finbot | Using yt-dlp fallback for YouTube clips
+2026-06-04 03:57:52,806 | INFO | finbot | yt-dlp found 1 unique clips
+2026-06-04 03:57:57,190 | INFO | finbot | Downloading clip: AsSQAT-zJjI
+2026-06-04 03:58:30,059 | INFO | finbot | Downloaded: /root/.openclaw/workspace/finbot/data/clips/AsSQAT-zJjI_Charles Payne This translates into trillions in in.mp4 (4.4 MB)
+2026-06-04 03:58:31,655 | INFO | finbot | Telegram bot initialized
+2026-06-04 03:58:45,332 | ERROR | finbot | Failed to send video: Timed out
+2026-06-04 03:58:55,394 | INFO | finbot | Cleaned up 7 old clips
+2026-06-04 03:58:55,396 | INFO | finbot | YouTube clip fetch complete
+2026-06-04 03:58:55,404 | INFO | finbot | Running hook rotation...
+2026-06-04 03:58:58,181 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-04 03:58:58,189 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-06-04 03:58:58,194 | INFO | finbot | Posted hook #1: negative_velocity
+2026-06-04 03:58:58,207 | INFO | finbot | Running war coverage check...
+2026-06-04 03:58:58,209 | INFO | finbot | Running war coverage check...
+2026-06-04 03:59:09,072 | WARNING | finbot | Feed parse failed or empty: Reuters World
+2026-06-04 03:59:15,078 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-06-04 03:59:21,066 | WARNING | finbot | Feed parse failed or empty: Jane's Defence
+2026-06-04 03:59:27,009 | WARNING | finbot | Feed parse failed or empty: Military.com
+2026-06-04 03:59:37,028 | WARNING | finbot | Feed timeout (10s): OilPrice.com
+2026-06-04 03:59:42,128 | WARNING | finbot | Feed parse failed or empty: Energy Intelligence
+2026-06-04 03:59:46,050 | WARNING | finbot | Feed parse failed or empty: Platts Oil
+2026-06-04 03:59:52,709 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-06-04 04:00:01,322 | ERROR | finbot | War coverage check failed: 'Publisher' object has no attribute 'send_message'
+2026-06-04 04:00:01,326 | INFO | finbot | Running daily digest...
+2026-06-04 04:00:01,329 | INFO | finbot | Fetching markets feeds...
+2026-06-04 04:00:04,476 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-06-04 04:00:09,873 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-06-04 04:00:12,828 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-06-04 04:00:15,850 | INFO | finbot | Fetched 10 from Financial Times
+2026-06-04 04:04:42,173 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-04 04:04:42,189 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-04 04:04:47,658 | INFO | finbot | OpenAI client initialized successfully
+2026-06-04 04:04:47,691 | INFO | finbot | Running war coverage check...
+2026-06-04 04:04:48,729 | INFO | finbot | Running war coverage check...
+2026-06-04 04:04:53,862 | WARNING | finbot | Feed returned status 404: Reuters World
+2026-06-04 04:04:59,218 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-06-04 04:05:07,111 | WARNING | finbot | Feed returned status 404: Jane's Defence
+2026-06-04 04:05:10,809 | WARNING | finbot | Feed returned status 404: Military.com
+2026-06-04 04:05:14,292 | WARNING | finbot | Feed returned status 404: OilPrice.com
+2026-06-04 04:05:17,470 | WARNING | finbot | Feed returned status 404: Energy Intelligence
+2026-06-04 04:05:20,055 | WARNING | finbot | Feed returned status 403: Platts Oil
+2026-06-04 04:05:25,849 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-06-04 04:05:32,717 | ERROR | finbot | Failed to send message: 'NoneType' object has no attribute 'send_message'
+2026-06-04 04:05:32,718 | ERROR | finbot | Failed to post war alert: Iran war live: Ceasefire tested by US-Iran clashes...
+2026-06-04 04:06:02,751 | ERROR | finbot | Failed to send message: 'NoneType' object has no attribute 'send_message'
+2026-06-04 04:06:02,752 | ERROR | finbot | Failed to post war alert: Gulf tensions escalate as Iran hits Kuwait, US str...
+2026-06-04 04:06:32,786 | ERROR | finbot | Failed to send message: 'NoneType' object has no attribute 'send_message'
+2026-06-04 04:06:32,786 | ERROR | finbot | Failed to post war alert: Trump suggests Iran talks could yield deal by week...
+2026-06-04 04:07:02,822 | INFO | finbot | War coverage check complete
+2026-06-04 04:07:02,824 | INFO | finbot | Running daily digest...
+2026-06-04 04:07:02,825 | INFO | finbot | Fetching markets feeds...
+2026-06-04 04:07:11,410 | INFO | finbot | Fetched 10 from Bloomberg Markets
+2026-06-04 04:07:16,761 | WARNING | finbot | Feed returned status 404: https://www.reutersagency.com/feed/?taxonomy=markets&post_type=reuters-best
+2026-06-04 04:07:24,716 | INFO | finbot | Fetched 10 from WSJ Markets
+2026-06-04 04:07:27,068 | INFO | finbot | Fetched 9 from Financial Times
+2026-06-04 04:07:33,756 | INFO | finbot | Fetched 10 from MarketWatch
+2026-06-04 04:07:35,439 | INFO | finbot | Fetched 10 from Investing.com
+2026-06-04 15:51:07,976 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-04 15:51:08,000 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-04 15:51:14,338 | INFO | finbot | OpenAI client initialized successfully
+2026-06-04 15:51:14,386 | INFO | finbot | Running war coverage check...
+2026-06-04 15:51:15,834 | INFO | finbot | Running war coverage check...
+2026-06-04 15:51:21,816 | WARNING | finbot | Feed returned status 404: Reuters World
+2026-06-04 15:51:27,303 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-06-04 15:51:42,083 | WARNING | finbot | Feed timeout (10s): Defense News
+2026-06-04 15:51:44,286 | WARNING | finbot | Feed returned status 404: Jane's Defence
+2026-06-04 15:51:46,692 | WARNING | finbot | Feed returned status 404: Military.com
+2026-06-04 15:51:50,311 | WARNING | finbot | Feed returned status 404: OilPrice.com
+2026-06-04 15:51:55,258 | WARNING | finbot | Feed returned status 404: Energy Intelligence
+2026-06-04 15:51:57,671 | WARNING | finbot | Feed returned status 403: Platts Oil
+2026-06-04 15:52:03,276 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-06-04 15:52:11,033 | ERROR | finbot | Failed to send message: 'NoneType' object has no attribute 'send_message'
+2026-06-04 15:52:11,092 | INFO | finbot | Telegram bot initialized
+2026-06-04 15:52:12,883 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 400 Bad Request"
+2026-06-04 15:52:12,892 | ERROR | finbot | Failed to send message: Can't parse entities: unsupported start tag "p" at byte offset 107
+2026-06-04 15:52:12,893 | ERROR | finbot | Failed to post war alert: Israeli Supreme Court strikes down ban on Red Cros...
+2026-06-04 15:52:44,301 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 400 Bad Request"
+2026-06-04 15:52:44,304 | ERROR | finbot | Failed to send message: Can't parse entities: unsupported start tag "p" at byte offset 134
+2026-06-04 15:52:44,675 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 400 Bad Request"
+2026-06-04 15:52:44,679 | ERROR | finbot | Failed to send message: Can't parse entities: unsupported start tag "p" at byte offset 134
+2026-06-04 15:52:44,680 | ERROR | finbot | Failed to post war alert: First IAEA report on Iran's nuclear programme sinc...
+2026-06-04 15:53:16,180 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 400 Bad Request"
+2026-06-04 15:53:16,183 | ERROR | finbot | Failed to send message: Can't parse entities: unsupported start tag "p" at byte offset 100
+2026-06-04 15:53:17,787 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 400 Bad Request"
+2026-06-04 15:53:17,791 | ERROR | finbot | Failed to send message: Can't parse entities: unsupported start tag "p" at byte offset 100
+2026-06-04 15:53:17,791 | ERROR | finbot | Failed to post war alert: Is Iran's new supreme leader taking up the reins o...
+2026-06-04 15:53:47,824 | INFO | finbot | War coverage check complete
+2026-06-04 15:53:47,835 | INFO | finbot | Fetching YouTube clips...
+2026-06-04 15:53:49,033 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-06-04 15:53:49,034 | INFO | finbot | No new clips found via API, trying yt-dlp fallback
+2026-06-04 15:53:49,035 | INFO | finbot | Using yt-dlp fallback for YouTube clips
+2026-06-04 15:53:56,386 | INFO | finbot | yt-dlp found 0 unique clips
+2026-06-04 15:53:56,387 | INFO | finbot | No new clips found
+2026-06-04 15:53:56,417 | INFO | finbot | Running hook rotation...
+2026-06-04 15:53:59,937 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-04 15:53:59,942 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-06-04 15:53:59,951 | INFO | finbot | Posted hook #2: curiosity_open_loop
+2026-06-04 16:10:13,464 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-04 16:10:13,488 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-04 16:10:18,318 | INFO | finbot | OpenAI client initialized successfully
+2026-06-04 16:10:18,345 | INFO | finbot | Running war coverage check...
+2026-06-04 16:10:19,525 | INFO | finbot | Running war coverage check...
+2026-06-04 16:10:25,721 | WARNING | finbot | Feed returned status 404: Reuters World
+2026-06-04 16:10:38,180 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-06-04 16:10:48,921 | WARNING | finbot | Feed returned status 404: Jane's Defence
+2026-06-04 16:10:51,914 | WARNING | finbot | Feed returned status 404: Military.com
+2026-06-04 16:10:57,308 | WARNING | finbot | Feed returned status 404: OilPrice.com
+2026-06-04 16:11:02,568 | WARNING | finbot | Feed returned status 404: Energy Intelligence
+2026-06-04 16:11:06,201 | WARNING | finbot | Feed returned status 403: Platts Oil
+2026-06-04 16:11:12,796 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-06-04 16:11:20,641 | ERROR | finbot | Failed to send message: 'NoneType' object has no attribute 'send_message'
+2026-06-04 16:11:20,712 | INFO | finbot | Telegram bot initialized
+2026-06-04 16:11:24,560 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-04 16:11:24,569 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-06-04 16:11:24,576 | INFO | finbot | Posted war alert: Mojtaba Khamenei: Iran's new supreme leader lurkin...
+2026-06-04 16:11:57,790 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-04 16:11:57,799 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-06-04 16:11:57,804 | INFO | finbot | Posted war alert: Israeli Supreme Court strikes down ban on Red Cros...
+2026-06-04 16:12:30,354 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-04 16:12:30,363 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-06-04 16:12:30,367 | INFO | finbot | Posted war alert: First IAEA report on Iran's nuclear programme sinc...
+2026-06-04 16:13:00,407 | INFO | finbot | War coverage check complete
+2026-06-04 16:13:00,408 | INFO | finbot | Fetching YouTube clips...
+2026-06-04 16:13:02,233 | WARNING | finbot | YouTube API returned 400: {
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "errors": [
+      {
+        "message": "API key not valid. Please pass a valid API key.",
+        
+2026-06-04 16:13:02,234 | INFO | finbot | No new clips found via API, trying yt-dlp fallback
+2026-06-04 16:13:02,236 | INFO | finbot | Using yt-dlp fallback for YouTube clips
+2026-06-04 16:16:37,144 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-04 16:16:37,164 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-04 16:16:42,044 | INFO | finbot | OpenAI client initialized successfully
+2026-06-04 16:16:43,221 | INFO | finbot | Running hook rotation...
+2026-06-04 16:16:43,225 | ERROR | finbot | Failed to send message: 'NoneType' object has no attribute 'send_message'
+2026-06-04 16:16:43,225 | ERROR | finbot | Failed to post hook #3
+2026-06-04 16:16:43,231 | INFO | finbot | Running war coverage check...
+2026-06-04 16:16:43,232 | INFO | finbot | Running war coverage check...
+2026-06-04 16:16:47,878 | WARNING | finbot | Feed returned status 404: Reuters World
+2026-06-04 16:16:53,424 | WARNING | finbot | Feed parse failed or empty: AP News
+2026-06-04 16:17:01,582 | WARNING | finbot | Feed returned status 404: Jane's Defence
+2026-06-04 16:17:05,072 | WARNING | finbot | Feed returned status 404: Military.com
+2026-06-04 16:17:08,345 | WARNING | finbot | Feed returned status 404: OilPrice.com
+2026-06-04 16:17:12,582 | WARNING | finbot | Feed returned status 404: Energy Intelligence
+2026-06-04 16:17:17,274 | WARNING | finbot | Feed returned status 403: Platts Oil
+2026-06-04 16:17:22,421 | WARNING | finbot | Feed parse failed or empty: Jerusalem Post
+2026-06-04 16:17:34,650 | ERROR | finbot | Failed to send message: 'NoneType' object has no attribute 'send_message'
+2026-06-04 16:17:34,707 | INFO | finbot | Telegram bot initialized
+2026-06-04 16:17:36,280 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-04 16:17:36,287 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-06-04 16:17:36,291 | INFO | finbot | Posted war alert: Is Iran's new supreme leader taking up the reins o...
+2026-06-04 16:18:08,640 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-04 16:18:08,649 | INFO | finbot | Message sent to @apexfinanceandsecurities
+2026-06-04 16:18:08,652 | INFO | finbot | Posted war alert: Turkey warns Greece, Cyprus not to engage in arms ...
+2026-06-04 16:19:50,673 | INFO | finbot | yt-dlp version: 2026.03.17
+2026-06-04 16:19:50,680 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
+2026-06-04 16:19:54,624 | INFO | finbot | OpenAI client initialized successfully

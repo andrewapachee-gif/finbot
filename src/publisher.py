@@ -117,6 +117,17 @@ class Publisher:
                 
         return success
         
+    async def send_message(self, text: str, parse_mode: str = "HTML"):
+        """Send a message to the channel (wrapper for compatibility)."""
+        from bot import bot
+        try:
+            if not bot.bot:
+                await bot.initialize()
+            return await bot.send_message(text, parse_mode=parse_mode)
+        except Exception as e:
+            logger.error(f"send_message wrapper failed: {e}")
+            return False
+        
     async def _add_engagement_poll(self, article: Dict):
         """Add a poll for engagement."""
         # Lazy import to avoid circular dependency
