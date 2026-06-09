@@ -72355,3 +72355,22 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f0444fb10>
 2026-06-04 16:19:50,673 | INFO | finbot | yt-dlp version: 2026.03.17
 2026-06-04 16:19:50,680 | INFO | finbot | Initializing AI client: provider=openai, model=gpt-4o-mini
 2026-06-04 16:19:54,624 | INFO | finbot | OpenAI client initialized successfully
+2026-06-09 22:41:52,112 | WARNING | finbot | Feed returned status 403: The Block
+2026-06-09 22:42:05,154 | WARNING | finbot | Feed returned status 403: Blockworks
+2026-06-09 22:42:08,148 | WARNING | finbot | Feed returned status 404: SEC Press Releases
+2026-06-09 22:42:10,948 | WARNING | finbot | Feed returned status 404: CFTC News
+2026-06-09 22:42:23,875 | WARNING | finbot | Feed returned status 404: FinCEN Updates
+2026-06-09 22:42:26,181 | WARNING | finbot | Feed returned status 404: CoinDesk Policy
+2026-06-09 22:42:28,675 | WARNING | finbot | Feed returned status 404: CoinMarketCap News
+2026-06-09 22:42:30,909 | WARNING | finbot | Feed parse failed or empty: CryptoPanic
+2026-06-09 22:42:33,030 | WARNING | finbot | Feed returned status 202: Binance Blog
+2026-06-09 22:42:36,863 | WARNING | finbot | Feed parse failed or empty: Coinbase Blog
+2026-06-09 22:44:14,967 | WARNING | finbot | Feed returned status 404: CoinDesk Policy
+2026-06-09 22:44:17,331 | WARNING | finbot | Feed parse failed or empty: CryptoPanic
+2026-06-09 22:44:19,891 | WARNING | finbot | Feed returned status 202: Binance Blog
+2026-06-09 22:45:00,310 | INFO | finbot | Telegram bot initialized
+2026-06-09 22:45:26,955 | WARNING | finbot | Feed returned status 404: CoinDesk Policy
+2026-06-09 22:45:31,492 | WARNING | finbot | Feed parse failed or empty: CryptoPanic
+2026-06-09 22:45:38,971 | WARNING | finbot | Feed returned status 202: Binance Blog
+2026-06-09 22:45:43,282 | INFO | httpx | HTTP Request: POST https://api.telegram.org/bot8322479420:AAFq5UTYFbT20ZAbaDU1AWFu634Xed78oc0/sendMessage "HTTP/1.1 200 OK"
+2026-06-09 22:45:43,289 | INFO | finbot | Message sent to @apexfinanceandsecurities

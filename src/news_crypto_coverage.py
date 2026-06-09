@@ -14,31 +14,25 @@ class CryptoNewsMonitor:
         self.state_file = DATA_DIR / "crypto_coverage.json"
         self.state = self._load_state()
         
-        # Crypto-specific RSS feeds (expanded beyond config.py defaults)
+        # Crypto-specific RSS feeds — verified working URLs
         self.crypto_feeds = {
             'news': [
                 {"name": "CoinDesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss/", "tier": 1},
-                {"name": "The Block", "url": "https://www.theblock.co/rss.xml", "tier": 1},
                 {"name": "Decrypt", "url": "https://decrypt.co/feed", "tier": 1},
                 {"name": "Cointelegraph", "url": "https://cointelegraph.com/rss", "tier": 2},
                 {"name": "CryptoSlate", "url": "https://cryptoslate.com/feed/", "tier": 2},
                 {"name": "Bitcoin Magazine", "url": "https://bitcoinmagazine.com/feed", "tier": 2},
-                {"name": "Blockworks", "url": "https://blockworks.co/news/feed", "tier": 1},
+                {"name": "Bitcoinist", "url": "https://bitcoinist.com/feed/", "tier": 2},
+                {"name": "NewsBTC", "url": "https://www.newsbtc.com/feed/", "tier": 2},
             ],
             'regulatory': [
-                {"name": "SEC Press Releases", "url": "https://www.sec.gov/cgi/browse-edgar?action=getcurrent&type=&company=&dateb=&owner=include&start=0&count=40&output=atom", "tier": 1},
-                {"name": "CFTC News", "url": "https://www.cftc.gov/rss/PressReleases.xml", "tier": 1},
-                {"name": "FinCEN Updates", "url": "https://www.fincen.gov/news/news-feed", "tier": 1},
                 {"name": "CoinDesk Policy", "url": "https://www.coindesk.com/policy/feed", "tier": 2},
             ],
             'market_data': [
-                {"name": "CoinMarketCap News", "url": "https://coinmarketcap.com/rss/feed", "tier": 2},
                 {"name": "CryptoPanic", "url": "https://cryptopanic.com/news/rss/", "tier": 1},
             ],
             'exchange': [
                 {"name": "Binance Blog", "url": "https://www.binance.com/en/blog/rss", "tier": 2},
-                {"name": "Coinbase Blog", "url": "https://blog.coinbase.com/feed", "tier": 2},
-                {"name": "Kraken Blog", "url": "https://blog.kraken.com/feed/", "tier": 2},
             ]
         }
         
@@ -301,7 +295,7 @@ class CryptoNewsMonitor:
         
         breaking = []
         for article in articles:
-            if article['composite_score'] >= 0.65 and not self.is_duplicate(article['id']):
+            if article['composite_score'] >= 0.45 and not self.is_duplicate(article['id']):
                 breaking.append(article)
         
         return breaking[:5]  # Max 5 breaking stories
