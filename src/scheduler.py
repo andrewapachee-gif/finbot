@@ -300,6 +300,17 @@ class Scheduler:
         except Exception as e:
             logger.error(f"European breaking check failed: {e}")
 
+    async def run_crypto_coverage(self):
+        """Run crypto news coverage check."""
+        from news_crypto_coverage import crypto_monitor
+        
+        logger.info("Running crypto coverage check...")
+        try:
+            await crypto_monitor.run_crypto_check()
+            logger.info("Crypto coverage check complete")
+        except Exception as e:
+            logger.error(f"Crypto coverage check failed: {e}")
+
     async def run_analytics_update(self):
         """Update analytics data."""
         from analytics_tracker import analytics_tracker
@@ -402,6 +413,11 @@ class Scheduler:
             lambda: asyncio.create_task(self.run_war_coverage())
         )
 
+        # Crypto news priority posts (every 20 minutes)
+        schedule.every(20).minutes.do(
+            lambda: asyncio.create_task(self.run_crypto_coverage())
+        )
+
         # Breaking news check (every 2 hours)
         schedule.every(2).hours.do(
             lambda: asyncio.create_task(self.run_breaking_news_check())
@@ -413,86 +429,6 @@ class Scheduler:
         )
 
         # Analytics update (hourly)
-        schedule.every().hour.do(
-            lambda: asyncio.create_task(self.run_analytics_update())
-        )
-
-        # YouTube clips (5x daily in US time)
-        # 06:00 ET -> 10:00 UTC (early morning US)
-        schedule.every().day.at("10:00").do(
-            lambda: asyncio.create_task(self.run_youtube_clips())
-        )
-        # 10:00 ET -> 14:00 UTC (morning US)
-        schedule.every().day.at("14:00").do(
-            lambda: asyncio.create_task(self.run_youtube_clips())
-        )
-        # 14:00 ET -> 18:00 UTC (afternoon US)
-        schedule.every().day.at("18:00").do(
-            lambda: asyncio.create_task(self.run_youtube_clips())
-        )
-        # 18:00 ET -> 22:00 UTC (evening US)
-        schedule.every().day.at("22:00").do(
-            lambda: asyncio.create_task(self.run_youtube_clips())
-        )
-        # 22:00 ET -> 02:00 UTC (late night US)
-        schedule.every().day.at("02:00").do(
-            lambda: asyncio.create_task(self.run_youtube_clips())
-        )
-
-        # Daily digest at 08:00 ET (12:00 UTC)
-        schedule.every().day.at("12:00").do(
-            lambda: asyncio.create_task(self.run_daily_digest())
-        )
-
-        # Market summary (twice daily ET)
-        # 09:00 ET -> 13:00 UTC (pre-market open)
-        schedule.every().day.at("13:00").do(
-            lambda: asyncio.create_task(self.run_market_summary())
-        )
-        # 16:00 ET -> 20:00 UTC (market close)
-        schedule.every().day.at("20:00").do(
-            lambda: asyncio.create_task(self.run_market_summary())
-        )
-
-        # European market hours (CET/CEST)
-        # 08:00 CET (07:00 UTC) - Pre-market
-        schedule.every().day.at("07:00").do(
-            lambda: asyncio.create_task(self.run_european_market_update())
-        )
-        # 12:00 CET (11:00 UTC) - Mid-day
-        schedule.every().day.at("11:00").do(
-            lambda: asyncio.create_task(self.run_european_market_update())
-        )
-        # 16:30 CET (15:30 UTC) - Euronext close
-        schedule.every().day.at("15:30").do(
-            lambda: asyncio.create_task(self.run_european_market_close())
-        )
-        # 17:30 CET (16:30 UTC) - LSE close
-        schedule.every().day.at("16:30").do(
-            lambda: asyncio.create_task(self.run_european_market_close())
-        )
-
-        # Weekly roundup
-        if ENABLE_WEEKLY_ROUNDUP:
-            day_map = {
-                'monday': schedule.every().monday,
-                'tuesday': schedule.every().tuesday,
-                'wednesday': schedule.every().wednesday,
-                'thursday': schedule.every().thursday,
-                'friday': schedule.every().friday,
-                'saturday': schedule.every().saturday,
-                'sunday': schedule.every().sunday
-            }
-            day_func = day_map.get(WEEKLY_ROUNDUP_DAY.lower(), schedule.every().sunday)
-            # 18:00 ET Sunday -> 22:00 UTC
-            day_func.at("22:00").do(
-                lambda: asyncio.create_task(self.run_weekly_roundup())
-            )
-
-        # Reset daily counter at midnight ET (04:00 UTC)
-        schedule.every().day.at("04:00").do(
-            publisher.reset_daily_counter
-        )
         schedule.every().hour.do(
             lambda: asyncio.create_task(self.run_analytics_update())
         )
@@ -523,6 +459,7 @@ class Scheduler:
         logger.info("=== AUTOMATED POSTING SCHEDULE ===")
         logger.info("Hook rotation: every 3 hours (8x daily)")
         logger.info("War coverage: every 30 minutes")
+        logger.info("Crypto coverage: every 20 minutes")
         logger.info("Breaking news: every 2 hours")
         logger.info("European breaking: every 30 min during market hours")
         logger.info("YouTube clips: 10:00, 14:00, 18:00, 22:00, 02:00 UTC")
@@ -543,6 +480,7 @@ class Scheduler:
         logger.info("All posts will now trigger automatically:")
         logger.info("- Hooks: every 3 hours")
         logger.info("- War news: every 30 minutes")
+        logger.info("- Crypto news: every 20 minutes")
         logger.info("- Breaking news: every 2 hours")
         logger.info("- YouTube clips: 5x daily")
         logger.info("- Market summaries: twice daily")
@@ -581,8 +519,14 @@ class Scheduler:
                 logger.error(f"Startup digest failed: {e}")
             try:
                 await self.run_war_coverage()
+                logger.info("Startup war coverage posted")
             except Exception as e:
                 logger.error(f"Startup war coverage failed: {e}")
+            try:
+                await self.run_crypto_coverage()
+                logger.info("Startup crypto coverage posted")
+            except Exception as e:
+                logger.error(f"Startup crypto coverage failed: {e}")
             
             # Record startup time
             with open(startup_file, 'w') as f:
