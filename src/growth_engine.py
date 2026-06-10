@@ -154,7 +154,7 @@ class GrowthEngine:
     
     # Trending hashtags and channel mention for every post
     TRENDING_HASHTAGS = "#Crypto #Bitcoin #Ethereum #Forex #Trading #Investing #Finance #StockMarket #ApexFinance #ApexFinanceAndSecurities"
-    CHANNEL_MENTION = "@apexfinanceandsecurities"
+    CHANNEL_MENTION = "https://t.me/apexfinanceandsecurities"
 
     def _build_footer(self) -> str:
         """Build standardized footer with hashtags and channel mention."""
