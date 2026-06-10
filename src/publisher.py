@@ -41,6 +41,14 @@ class Publisher:
         self.posted_articles.add(article_id)
         self._save_posted()
         
+    # Trending hashtags and channel mention for every post
+    TRENDING_HASHTAGS = "#Crypto #Bitcoin #Ethereum #Forex #Trading #Investing #Finance #StockMarket #ApexFinance #ApexFinanceAndSecurities"
+    CHANNEL_MENTION = "@apexfinanceandsecurities"
+
+    def _build_footer(self) -> str:
+        """Build standardized footer with hashtags and channel mention."""
+        return f"\n\n{self.TRENDING_HASHTAGS}\n👤 {self.CHANNEL_MENTION}"
+
     def format_article(self, article: Dict) -> str:
         """Format article for Telegram post."""
         analysis = article.get('ai_analysis', {})
@@ -69,6 +77,9 @@ class Publisher:
         from growth_engine import growth_engine
         cta = growth_engine.generate_viral_cta('breaking' if breaking else 'article')
         
+        # Build standardized footer
+        footer = self._build_footer()
+        
         text = f"""{breaking_tag}<b>{article['title']}</b>
 
 {rewrite[:400]}
@@ -76,7 +87,7 @@ class Publisher:
 {sentiment_emoji} Sentiment: <i>{sentiment.title()}</i>{tickers_str}
 
 🔗 <a href="{article['link']}">Read full article</a>
-📰 {article['source']}{cta}"""
+📰 {article['source']}{cta}{footer}"""
         
         return text
         
@@ -160,8 +171,8 @@ class Publisher:
         
         text = header + digest
         
-        # Add footer
-        footer = "\n\n📈 Stay informed. Invest wisely."
+        # Add footer with hashtags and channel mention
+        footer = self._build_footer()
         text += footer
         
         await bot.send_message(text)
@@ -185,6 +196,10 @@ class Publisher:
         
         text = header + roundup
         
+        # Add footer with hashtags and channel mention
+        footer = self._build_footer()
+        text += footer
+        
         await bot.send_message(text)
         logger.info("Weekly roundup posted")
         
@@ -201,6 +216,10 @@ class Publisher:
         for name, data in market_data.items():
             change_emoji = "🟢" if data['change'] > 0 else "🔴"
             text += f"{change_emoji} <b>{name}</b>: {data['price']} ({data['change']:+.2f}%)\n"
+        
+        # Add footer with hashtags and channel mention
+        footer = self._build_footer()
+        text += footer
             
         await bot.send_message(text)
         logger.info("Market summary posted")
@@ -218,11 +237,12 @@ class Publisher:
             logger.info(f"Skipping duplicate clip: {clip['title'][:50]}")
             return False
             
-        # Format caption with viral CTA
+        # Format caption with viral CTA + standardized footer
         from growth_engine import growth_engine
         sentiment_emoji = "🎬"
         channel = clip.get('channel_title', 'Unknown')
         cta = growth_engine.generate_viral_cta('clip')
+        footer = self._build_footer()
         
         caption = f"""{sentiment_emoji} <b>{clip['title']}</b>
 
@@ -232,7 +252,7 @@ class Publisher:
 
 🔗 <a href="{clip['url']}">Watch on YouTube</a>
 
-#YouTubeClip #Finance #Investing{cta}"""
+#YouTubeClip #Finance #Investing{cta}{footer}"""
         
         # Try video upload first, fallback to thumbnail+link
         if video_path and os.path.exists(video_path):

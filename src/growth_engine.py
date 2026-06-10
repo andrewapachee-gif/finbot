@@ -117,8 +117,9 @@ class GrowthEngine:
         
         formatted = format_hook_for_telegram(hook_data)
         cta = self.generate_viral_cta('hook')
+        footer = self._build_footer()
         
-        return formatted + cta
+        return formatted + cta + footer
         
     def get_random_hook(self) -> dict:
         """Get a random hook from the high-retention collection."""
@@ -130,7 +131,7 @@ class GrowthEngine:
         """Format article with viral optimization."""
         from publisher import publisher
         
-        # Get base formatted text
+        # Get base formatted text (already includes footer via publisher)
         base_text = publisher.format_article(article)
         
         # Add viral CTA
@@ -151,6 +152,14 @@ class GrowthEngine:
         
         return viral_text
     
+    # Trending hashtags and channel mention for every post
+    TRENDING_HASHTAGS = "#Crypto #Bitcoin #Ethereum #Forex #Trading #Investing #Finance #StockMarket #ApexFinance #ApexFinanceAndSecurities"
+    CHANNEL_MENTION = "@apexfinanceandsecurities"
+
+    def _build_footer(self) -> str:
+        """Build standardized footer with hashtags and channel mention."""
+        return f"\n\n{self.TRENDING_HASHTAGS}\n👤 {self.CHANNEL_MENTION}"
+
     def format_war_post(self, article: Dict) -> str:
         """Format war/geopolitical news with urgency."""
         title = article['title']
@@ -165,6 +174,9 @@ class GrowthEngine:
         # Market impact analysis
         impact = self._analyze_market_impact(article)
         
+        # Build standardized footer
+        footer = self._build_footer()
+        
         text = f"""🚨 <b>BREAKING — URGENT</b>
 
 <b>{title}</b>
@@ -176,7 +188,7 @@ class GrowthEngine:
 ⏰ <i>Developing story — updates as they come</i>
 🔗 <a href="{link}">Source: {source}</a>
 
-⚠️ <i>This affects markets. Forward to your trading circle.</i>"""
+⚠️ <i>This affects markets. Forward to your trading circle.</i>{footer}"""
         
         return text
     
